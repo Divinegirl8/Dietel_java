@@ -1,0 +1,148 @@
+2.1
+
+a) open curly braces and close curly braces
+b) if statement
+c) //
+d) blank space , tab space(identation) , character space are called white space.
+e) keywords
+f) method main
+g) methods printf , println , print
+
+
+2.2
+
+a) false - because any code after // jvm ignores it and dont execute it
+b) True - because you are instructing the jvm that this variable name should output a data type
+c) false - because java is case sensitive
+d) False - because % can be used for any number either decimal numbers or decimal point number
+e) False - because * , / , % has higher level of precedence than - and +
+f) False - because java 9 no longer accept underscore _ as an identifier
+
+2.3
+
+a) int c;
+   int thisIsAVariable;
+   int q76354;
+   int number;
+
+   c = 0;
+   thisIsAVariable = 0;
+   q76354 = 0;
+   number = 0;
+
+b) System.out.println("Enter an integer: ");
+c) int value = input.nextInt();
+d) System.out.println("This is a Java program");
+e)System.out.printf("%s%n%s","This is a Java" , "program");
+f) if (number != 7){
+ System.out.print(" The variable number is not equal to 7");
+
+}
+
+
+2.4
+
+a) if ( c < 7) {
+
+System.out.println("c is less than 7");
+
+}
+
+b) if (c >= 7) {
+
+System.out.println("c is to equal to or greater than 7");
+
+}
+
+2.5
+
+a) // program will calculate the product of three integers
+b) Scanner input = new Scanner(System.in);
+c) System.out.println("Enter the first integer: ");
+d) int x =  input.nextInt();
+e) System.out.println("Enter the second integer: ");
+f) int y =  input.nextInt();
+g) System.out.println("Enter the third integer: ");
+h) int z =  input.nextInt();
+i) int result = x * y * z;
+j) System.out.printf("Product is %d",result);
+
+
+2.6
+
+import java.util.Scanner;
+
+ // program will calculate the product of three integers
+
+ public class ThreeIntegers {
+
+ public static void main(String[] args) {
+
+ Scanner input = new Scanner(System.in);
+
+ System.out.println("Enter the first integer: ");
+ int x =  input.nextInt();
+
+ System.out.println("Enter the second integer: ");
+ int y =  input.nextInt();
+
+ System.out.println("Enter the third integer: ");
+ int z =  input.nextInt();
+
+ int result = x * y * z;
+ System.out.printf("Product is %d",result);
+
+
+ }
+
+
+ }
+
+
+2.7
+
+a) comments
+b) an if statements
+c) division and modulo(%)
+d) innermost set of parenthesis
+e) variables
+
+
+2.8
+
+a) System.out.print("Enter an integer: ");
+b)int a = b * c;
+c) // a program performs a sample payroll calculations.
+
+
+2.9
+a) True because the addition operation is inside the parenthesis;
+b) False because some of the variable name starts with underscores and consist of just symbols
+c) False because division has an higher precedence than addition
+d) False because a variable name cannot start with a number, cannot consist of two numbers and cannot have special characters like .,@
+
+
+2.10
+
+a) x = 10
+b) The value of 5 * 1 is 5
+c) x is 5 and y is 1
+d) 6 is not equal to 5
+
+2.11
+
+The answer is b because System.out.println("m = m + 1"); is just a print statement, it's not declaring a variable and initializing a value.
+
+2.12
+
+a) y = a * x * x + 5 * x + 2;
+b) y = a * x * x + (5 * x) + 2;
+d) y = a * (x * x) + 5 * x + 2;
+f) y = a * (x * x + 5 * x + 2);
+
+
+2.13
+
+13
+14
+

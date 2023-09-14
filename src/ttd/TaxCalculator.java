@@ -31,4 +31,18 @@ public double checkSalary(double salary){
     }
 }
 
+    public double checkYearlyTax(double salary){
+        if (salary <= 30_000) {
+          double tax =  (15 * salary) / 100;
+
+            return tax * 12;
+        }
+
+        else {
+            double tax =  (20 * salary) / 100;
+            return tax * 12;
+        }
+    }
+
+
 }

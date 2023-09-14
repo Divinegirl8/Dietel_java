@@ -40,4 +40,12 @@ class TaxCalculatorTest {
 
     }
 
+    @Test
+    public void testTotalTax() {
+        TaxCalculator tax = new TaxCalculator();
+
+        tax.setSalary(21450);
+        assertEquals(38610,tax.checkYearlyTax(tax.getSalary()));
+    }
+
 }

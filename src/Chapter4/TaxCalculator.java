@@ -22,12 +22,19 @@ public class TaxCalculator {
 
             if (earning <= 30_000) {
                 double tax = (15 * earning) / 100;
-                System.out.printf("Citizen's Tax: %.1f%n",tax);
+                double yearly = tax * 12;
+//                double totaltax = yearly - earning;
+
+                System.out.printf("Citizen's Yearly Total Tax: %.1f%n",yearly);
+
             }
 
             else {
                 double tax = (20 * earning) / 100;
-                System.out.printf("Citizen's Tax: %.1f%n",tax);
+                double yearly = tax * 12;
+//                double totaltax = yearly - earning;
+
+                System.out.printf("Citizen's Yearly Total Tax: %.1f%n",yearly);
             }
 
         }
