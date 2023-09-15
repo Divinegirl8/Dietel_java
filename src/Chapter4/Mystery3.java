@@ -15,5 +15,5 @@ public class Mystery3 {
     }
 }
 
-// The above code will keep iterating because of the set in the nested while, the value assigned in column will always be greater than 1 and the prefix increment set in
+// The above code will keep iterating because of the condition set in the nested while, the value assigned in column will always be greater than 1 and the prefix increment set in
 // the column i.e ++column will keep increasing the value
