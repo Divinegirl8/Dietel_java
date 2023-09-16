@@ -19,6 +19,36 @@ public class Function {
         }
     }
 
+    public static int copies(int copies){
+        if (copies > 0 && copies <= 4) {
+            return 2000;
+        }
+        else if (copies <= 9) {
+            return 1800;
+        }
+
+        else if (copies <= 29) {
+            return 1600;
+        }
+        else if (copies <= 49) {
+            return  1500;
+        }
+        else if (copies <= 99) {
+            return  1300;
+        }
+        else if (copies <= 199) {
+            return  1200;
+        }
+
+        else if (copies <= 499) {
+            return  1100;
+        }
+
+        else {
+            return 1000;
+        }
+    }
+
     public static int numberPower(int firstNumber , int secondNumber) {
         int result = 1;
 
