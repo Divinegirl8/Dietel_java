@@ -1,5 +1,7 @@
 package Chapter4;
 
+import Function.Function;
+
 import java.util.Scanner;
 
 public class ConstantX {
@@ -16,7 +18,7 @@ public class ConstantX {
 
         for (int count = 1; count <= terms; count++){
             factorial *= count;
-            double divisor = Math.pow(base,count) / factorial;
+            double divisor = Function.numberPower(base,count) / factorial;
             sum += divisor;
 
         }

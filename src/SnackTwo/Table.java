@@ -1,6 +1,7 @@
 package SnackTwo;
 
-// still working on it
+
+import Function.Function;
 
 public class Table {
     public static void main(String[] args) {
@@ -8,9 +9,7 @@ public class Table {
         for (int count = 1; count <= 5; count++){
             int secondColumn = count + 1;
 
-            int result = secondColumn * count * 2;
-
-//             int result = (int)Math.pow(count,secondColumn);
+             int result = Function.numberPower(count,secondColumn);
 
 
                 System.out.println(count + "\t" + secondColumn + "\t" + result);
