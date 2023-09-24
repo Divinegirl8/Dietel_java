@@ -162,6 +162,48 @@ public class Function {
 
     }
 
+    public static  int fibonacci(int number){
+        int firstNumber = 0;
+        int secondNumber = 1;
+        int result = firstNumber + secondNumber;
+        int count = 1;
+        int integer = 0;
+
+        while (count <= number){
+            count++;
+            firstNumber = secondNumber;
+            secondNumber = result;
+            result = firstNumber + secondNumber;
+
+            if (result < number) {
+                integer = result;
+            }
+
+        }
+
+        return integer;
+    }
+
+    public static double interestCalculation(int interestRate,int years,int principal){
+        double rate = (double) interestRate / 100;
+        double result = 0;
+        for (int count = 1; count <= years; count++){
+             result = principal * Math.pow(1 + rate,count);
+
+
+        }
+        return Math.round(result * 100.0)/100.0;
+    }
+
+    public static String print(String user){
+        Scanner scan = new Scanner(System.in);
+        System.out.println(user);
+        String input = scan.nextLine();
+        return input;
+    }
+
+
+
     }
 
 
