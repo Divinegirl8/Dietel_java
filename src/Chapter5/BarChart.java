@@ -6,67 +6,24 @@ import java.util.Scanner;
 
 public class BarChart {
 public static void chart() {
-
-//    Scanner scan = new Scanner(System.in);
-//    System.out.println("Enter a number five times(1 - 30): ");
-//
-//    int number = 0;
-//
-//    for (int count = 0; count < 5;){
-//        System.out.println();
-//        System.out.println("Enter a number: ");
-//        number = scan.nextInt();
-//        if (number <= 30) {
-//            count ++;
-//            for (int row = 0; row < number; row++)
-//            {
-//                System.out.print("*");
-//
-//            }}
-//        else {
-//            System.out.println("The number you entered is greater than 30");
-//        }
-//
-//    }
-
     Scanner scan = new Scanner(System.in);
-    System.out.println("Enter a number five times(1 - 30): ");
-    System.out.println("Enter a number: ");
-    int firstNumber = scan.nextInt();
-    System.out.println("Enter a number: ");
-    int secondNumber = scan.nextInt();
-    System.out.println("Enter a number: ");
-    int thirdNumber = scan.nextInt();
-    System.out.println("Enter a number: ");
-    int fourthNumber = scan.nextInt();
-    System.out.println("Enter a number: ");
-    int fifthNumber = scan.nextInt();
+    int[] numbers = new int[5];
 
 
-    for(int count = 0; count < firstNumber; count++){
-        System.out.print("*");
-    }
-    System.out.println();
-    for(int count = 0; count < secondNumber; count++){
-        System.out.print("*");
-    }
-    System.out.println();
-    for(int count = 0; count < thirdNumber; count++){
-        System.out.print("*");
-    }
-    System.out.println();
-    for(int count = 0; count < fourthNumber; count++){
-        System.out.print("*");
-    }
-    System.out.println();
-    for(int count = 0; count < fifthNumber; count++){
-        System.out.print("*");
+    for (int count = 0; count < numbers.length; count++){
+        System.out.print("Enter Number: ");
+        int user = scan.nextInt();
+        numbers[count] = user;
     }
 
+    for (int integers: numbers){
+        for (int counted = 0; counted < integers; counted++){
+        System.out.print("*");
 
+    }
+        System.out.println();}
 
 }
-
     public static void main(String[] args) {
         chart();
     }
