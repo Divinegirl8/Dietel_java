@@ -202,7 +202,98 @@ public class Function {
         return input;
     }
 
+public static double divideOrSquare(int number){
+        double result = 0;
+        if(number % 5 == 0 ){
+            result = Math.sqrt(number);
+        }
+        else {
+            result = number % 5;
+        }
+        return Math.round(result * 100.0)/100.0;
+}
 
+    public static  int sumDigits(long number){
+        String extractNumber = String.valueOf(number);
+        long integer = extractNumber.length();
+
+        int count = 0;
+        int sum = 0;
+
+        while (count < integer){
+            int result = (int) number / Function.numberPower(10,count) % 10;
+            count ++;
+            sum += result;
+        }
+
+        return sum;
+
+    }
+
+    public static void reverse(int number){
+        String extractNumber = String.valueOf(number);
+        int integer = extractNumber.length();
+
+        int count = 0;
+        int result = 0;
+
+        System.out.print("The reversed number is ");
+        while (count < integer){
+            result = number / Function.numberPower(10,count) % 10;
+            count ++;
+            System.out.print(result);
+
+        }
+
+    }
+
+    public static void triangle(){
+        for(int count = 1; count <= 8; count++){
+            for (int row = 8; row > count; row--){
+                System.out.print(" " + " ");
+            }
+            for (int row2 = 1; row2 < count; row2++){
+                System.out.print("*" + " ");
+            }
+
+            for (int row = 2; row < count; row++){
+                System.out.print("*" + " ");
+            }
+            for (int row2 = 8; row2 > count; row2--){
+                System.out.print(" ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void reversedTriangle(){
+        for(int count = 1; count <= 8; count++){
+
+
+            for (int row = 1; row <= count; row++){
+                System.out.print(" " + " ");
+            }
+            for (int row2 = 7; row2 > count; row2--){
+                System.out.print("*" + " ");
+            }
+            for (int row = 6; row > count; row--){
+                System.out.print("*" + " ");
+            }
+            for (int row2 = 1; row2 < count; row2++){
+                System.out.print(" " + " ");
+            }
+
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter a number to get the reversal: ");
+        int userInput = scan.nextInt();
+        reverse(userInput );
+
+    }
 
     }
 

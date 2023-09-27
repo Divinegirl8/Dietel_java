@@ -7,8 +7,9 @@ public class SumSeries {
         long result = 0;
 
         while (count < integer){
-            result += count;
             count += 1;
+            result += count;
+
 
             System.out.println(count + "\t" + result);
 
