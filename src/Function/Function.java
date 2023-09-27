@@ -287,11 +287,37 @@ public static double divideOrSquare(int number){
         }
     }
 
+    public static String monetaryInterestCalculator(int principalAmount,int rateAmount,int compound,int years){
+        int principal = principalAmount;
+//        convert to penny, 1 penny is equivalent to 1 cent, 100 cent is 1 dollar
+        int penny = principal * 100;
+
+        double rate = (double)rateAmount / 100;
+        int compoundingFrequently = compound;
+
+        double annual = 0;
+        String letter = " ";
+        for (int count = 1; count <= years; count++){
+            annual = penny * Math.pow(1 + rate / compoundingFrequently,compoundingFrequently * count);
+        }
+
+        int dollar = (int)annual / 100;
+        int cent = (int)annual % 100;
+
+        String value = String.format("The compounded interest is $%d.%d cents",dollar,cent);
+
+        return  value + letter;
+
+    }
+
     public static void main(String[] args) {
+
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter a number to get the reversal: ");
         int userInput = scan.nextInt();
         reverse(userInput );
+
+
 
     }
 
