@@ -75,6 +75,11 @@ class SumDigitTest {
         long result = Function.sumDigits(-2+2-5+2+1-1+6-7);
         assertEquals(-4,result);
     }
+    @Test
+    public void testSomething(){
+        long result = Function.sumDigits(-234);
+        assertEquals(5, result);
+    }
 
 
 }

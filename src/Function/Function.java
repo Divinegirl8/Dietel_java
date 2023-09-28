@@ -310,6 +310,52 @@ public static double divideOrSquare(int number){
 
     }
 
+
+    public static int arrayMaxNumber(int[] integer){
+        int largest = integer[0];
+        for (int count = 0; count < integer.length; count++){
+            if (integer[count] > largest){
+                largest = integer[count];
+            }
+        }
+
+
+
+        return largest;
+    }
+
+
+    public static int minNumber(int[] integer){
+        int smallest = integer.length;
+
+        for (int count = 0; count < integer.length;count++){
+            if(integer[count] < smallest){
+                smallest = integer[count];
+            }
+        }
+        return smallest;
+    }
+
+    public static int sumInt(int[] integer){
+        int total = 0;
+
+        for (int count = 0; count < integer.length; count++){
+            total += integer[count];
+        }
+
+        return total;
+    }
+
+    public static double averageArray(int[] integers){
+        double result = 0;
+        for (int count = 0; count < integers.length;count++){
+           int number = sumInt(integers);
+           result = number / (integers.length * 1.0);
+        }
+        return result;
+    }
+
+
     public static void main(String[] args) {
 
         Scanner scan = new Scanner(System.in);

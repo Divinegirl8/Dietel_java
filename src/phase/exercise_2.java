@@ -6,7 +6,7 @@ public class exercise_2 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
-        int sum = 0;
+        double sum = 0;
         int count = 0;
         while(count < 10){
             System.out.print("Enter Score: ");

@@ -30,4 +30,27 @@ public class ScoresInArray {
 
         return largest;
     }
+
+    public static int arraySmallestNumber(int integer){
+        Scanner scan = new Scanner(System.in);
+
+        int[] scores = new int[integer];
+
+        int count;
+        int minimum = 0;
+        for (count = 0; count < scores.length; count++){
+            System.out.print("Enter score: ");
+            int score = scan.nextInt();
+            scores[count]  = score;
+            minimum = scores[count];
+        }
+
+        for (int number: scores){
+            if (number < minimum){
+                minimum = number;
+            }
+        }
+
+        return minimum;
+    }
 }

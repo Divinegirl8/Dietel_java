@@ -11,10 +11,8 @@ public class Triple {
                    System.out.println();
 
                 }
-
                 }
             }
-
         }
 
     }

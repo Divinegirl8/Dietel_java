@@ -7,8 +7,5 @@ public class DiamondPrinting {
 
         Function.triangle();
         Function.reversedTriangle();
-
-
-
     }
 }

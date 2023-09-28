@@ -3,7 +3,6 @@ package Chapter4;
 public class Asteriks {
     public static void main(String[] args) {
 
-
         for (int column = 1; column <= 4; column++){
 
             for (int row = 1; row <= 8; row++){
