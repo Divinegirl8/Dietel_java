@@ -127,7 +127,26 @@ public class Functions {
 
 
 
+    public static String twoList(String[] firstInput ,int[] secondInput){
+        StringBuilder result = new StringBuilder(" [");
+        String result1 = "";
+        String result2 = "";
+        int column = 0;
 
+        for (int row = 0; row < firstInput.length; row++){
+            for (; column <= row; column ++){
+                result1 = firstInput[row] + ",";
+                result2 = String.valueOf(secondInput[column]);
+            }
+
+            result.append(result1).append(result2);
+            if (column != secondInput.length){
+            result.append(",");}
+        }
+        result.append("]");
+
+        return result.toString();
+    }
 
 
     }
