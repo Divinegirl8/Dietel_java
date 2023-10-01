@@ -144,7 +144,7 @@ public class Functions {
     public static String twoSeperateList(String[] firstInput , int[] secondInput){
         StringBuilder result1 = new StringBuilder("");
         StringBuilder result2 = new StringBuilder("");
-        String result = "";
+
         for (String letter: firstInput){
             result1.append(letter).append(",");
         }
@@ -156,9 +156,7 @@ public class Functions {
             }
         }
 
-        result = "[" + result1 + result2 +
-                "]";
-        return result;
+        return "[" + result1 + result2 + "]";
 
     }
 
