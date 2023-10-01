@@ -126,27 +126,43 @@ public class Functions {
     }
 
 
-
     public static String twoList(String[] firstInput ,int[] secondInput){
         StringBuilder result = new StringBuilder(" [");
-        String result1 = "";
-        String result2 = "";
-        int column = 0;
 
         for (int row = 0; row < firstInput.length; row++){
-            for (; column <= row; column ++){
-                result1 = firstInput[row] + ",";
-                result2 = String.valueOf(secondInput[column]);
-            }
-
-            result.append(result1).append(result2);
-            if (column != secondInput.length){
+            result.append(firstInput[row]).append(",").append(secondInput[row]);
+            if (row < secondInput.length-1){
             result.append(",");}
         }
         result.append("]");
 
         return result.toString();
     }
+
+
+
+    public static String twoSeperateList(String[] firstInput , int[] secondInput){
+        StringBuilder result1 = new StringBuilder("");
+        StringBuilder result2 = new StringBuilder("");
+        String result = "";
+        for (String letter: firstInput){
+            result1.append(letter).append(",");
+        }
+
+        for (int count = 0; count < secondInput.length; count++) {
+            result2.append(secondInput[count]);
+            if (count < secondInput.length - 1){
+                result2.append(",");
+            }
+        }
+
+        result = "[" + result1 + result2 +
+                "]";
+        return result;
+
+    }
+
+
 
 
     }
