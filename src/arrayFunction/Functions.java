@@ -67,6 +67,65 @@ public class Functions {
     }
 
 
+    public static double summationUsingForLoop(double[] numbers){
+        double total = 0;
+
+        for (int count = 0; count < numbers.length; count++){
+            total += numbers[count];
+        }
+
+        return Math.round(total * 100.0) / 100.0;
+    }
+
+    public static double summationUsingWhileLoop(double[] numbers){
+        double total = 0;
+
+        int count = 0;
+        while (count < numbers.length){
+            total += numbers[count];
+            count ++;
+        }
+
+        return total;
+    }
+
+    public static double summationUsingDoWhileLoop(double[] numbers){
+
+        double total = 0;
+        int count = 0;
+
+        do {
+            total += numbers[count];
+            ++count;
+        }
+
+        while (count != numbers.length);
+
+
+     return Math.round(total * 100.0) / 100.0;
+    }
+
+
+    public static String runningTotal(int[] numbers){
+        int total = 0;
+
+       int count = 0;
+       String result = " ";
+
+       while (count < numbers.length){
+
+           total += numbers[count];
+
+           count += 1;
+           String output = String.valueOf(total);
+           result += output + " ";
+
+
+       }
+      return result;
+    }
+
+
 
 
 
