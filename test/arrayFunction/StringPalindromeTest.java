@@ -25,4 +25,9 @@ class StringPalindromeTest {
         assertFalse(stringPalindrome("gunners"));
     }
 
+    @Test
+    public void testStringPalindromeFour() {
+        assertTrue(stringPalindrome("noon"));
+    }
+
 }

@@ -1,5 +1,7 @@
 package arrayFunction;
 
+import Function.Function;
+
 import java.util.Scanner;
 
 public class Functions {
@@ -56,14 +58,14 @@ public class Functions {
 
 
     public static boolean stringPalindrome(String letters){
-        String obi = "";
+        String word = "";
         int checkLength = letters.length();
 
         for(int count = checkLength - 1; count >= 0; count--){
          char index = letters.charAt(count);;
-           obi += index;
+           word += index;
         }
-        return obi.equals(letters);
+        return word.equals(letters);
     }
 
 
@@ -159,6 +161,28 @@ public class Functions {
         return "[" + result1 + result2 + "]";
 
     }
+
+
+    public static String digitToList(int integer){
+        StringBuilder word = new StringBuilder("[");
+        String value = String.valueOf(integer);
+
+
+        for (int count = 0; count < value.length(); count ++){
+            char me = value.charAt(count);
+            word.append(me);
+
+            if(count < value.length()-1){
+                word.append(",");
+            }
+        }
+
+        word.append("]");
+
+        return word.toString();
+
+    }
+
 
 
 

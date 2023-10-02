@@ -134,7 +134,7 @@ public class Nokia3310 {
             case 1 -> System.out.println("compose a message");
             case 2 -> System.out.println("inbox");
             case 3 -> System.out.println("view saved messages");
-            case 4 -> System.out.println("picture messaage");
+            case 4 -> System.out.println("picture message");
             case 5 -> System.out.println("templates");
             case 6 -> System.out.println("smileys");
             case 7 -> messageSetting();
