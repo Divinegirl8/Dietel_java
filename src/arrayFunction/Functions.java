@@ -1,8 +1,6 @@
 package arrayFunction;
 
-import Function.Function;
-
-import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Functions {
 
@@ -18,12 +16,10 @@ public class Functions {
 
 
 
-    public static String reverseNumber(int[] integer){
-        String result = " ";
+    public static ArrayList<Integer> reverseNumber(int[] integer){
+        ArrayList<Integer> result = new ArrayList<>();
         for (int count = integer.length-1; count >= 0; count--){
-
-            String value = String.valueOf(integer[count]);
-            result += value + " ";
+            result.add(integer[count]);
         }
         return result;
     }
@@ -62,7 +58,7 @@ public class Functions {
         int checkLength = letters.length();
 
         for(int count = checkLength - 1; count >= 0; count--){
-         char index = letters.charAt(count);;
+         char index = letters.charAt(count);
            word += index;
         }
         return word.equals(letters);
@@ -183,8 +179,7 @@ public class Functions {
 
     }
 
-
-
+ 
 
 
     }

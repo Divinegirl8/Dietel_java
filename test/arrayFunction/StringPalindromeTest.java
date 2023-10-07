@@ -30,4 +30,9 @@ class StringPalindromeTest {
         assertTrue(stringPalindrome("noon"));
     }
 
+    @Test
+    public void testStringPalindromeFive() {
+        assertTrue(stringPalindrome("boob"));
+    }
+
 }
