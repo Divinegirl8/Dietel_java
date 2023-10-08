@@ -71,12 +71,6 @@ long checkIndex2 = pickedDigits.get(getSecondIndex);
 
 
 
-
-
-
-
-
-
 //        MasterCard
 
         if (check == 5 && value.length() >= 13 && value.length() <= 16 && sumAll % 10 == 0){
@@ -190,8 +184,20 @@ long checkIndex2 = pickedDigits.get(getSecondIndex);
                   """,card,value.length());
         }
 
+if(check < 3 || check > 6){
+
+    System.out.printf("""
+*****************************************
+**Credit Card Type: Invalid Card
+**Credit Card NUmber: %d
+**Credit Card Digit Length: %d
+**Credit Card Validity Status: InValid
+********************************************\s
+%n         \s
+                  """,card,value.length());
+
+}
+
 
     }}
 
-//678576018402626
-//5399831619690404
