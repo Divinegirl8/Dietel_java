@@ -72,7 +72,7 @@ long checkIndex2 = pickedDigits.get(getSecondIndex);
         String cardType = "";
         String status = "";
 
-//        MasterCard
+
 
         if (check == 5 && value.length() >= 13 && value.length() <= 16 && sumAll % 10 == 0) {
              cardType = "MasterCard";
@@ -85,7 +85,7 @@ long checkIndex2 = pickedDigits.get(getSecondIndex);
 
         }
 
-//        American Express Card
+
 
 
         if(check == 3 && checkIndex2 == 7 && value.length() >= 13 && value.length() <= 16 && sumAll % 10 == 0){
@@ -101,7 +101,7 @@ long checkIndex2 = pickedDigits.get(getSecondIndex);
 
 
 
-//        Discover Cards
+
         if(check == 6 && value.length() >= 13 && value.length() <= 16 && sumAll % 10 == 0){
             cardType = "Discover Card";
             status = "Valid";
@@ -112,7 +112,7 @@ long checkIndex2 = pickedDigits.get(getSecondIndex);
         }
 
 
-//        VisaCard
+
 
 
         if (check == 4 && value.length() >= 13 && value.length() <= 16 && sumAll % 10 == 0 ){
