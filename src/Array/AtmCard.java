@@ -9,7 +9,7 @@ public class AtmCard {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Hello, Kindly Enter Card details to verify");
+        System.out.println("Hello, Kindly Enter Card details to verify: ");
         long card = scan.nextLong();
         String value = String.valueOf(card);
 
@@ -69,134 +69,80 @@ long check = pickedDigits.get(getFirstIndex);
 long checkIndex2 = pickedDigits.get(getSecondIndex);
 
 
-
+        String cardType = "";
+        String status = "";
 
 //        MasterCard
 
-        if (check == 5 && value.length() >= 13 && value.length() <= 16 && sumAll % 10 == 0){
-            System.out.printf("""
-*****************************************
-**Credit Card Type: MasterCard
-**Credit Card NUmber: %d
-**Credit Card Digit Length: %d
-**Credit Card Validity Status: Valid
-********************************************\s
-%n         \s
-                  """,card,value.length());
+        if (check == 5 && value.length() >= 13 && value.length() <= 16 && sumAll % 10 == 0) {
+             cardType = "MasterCard";
+             status = "Valid";
         }
 
         else if (check == 5 && value.length() >= 13 && value.length() <= 16 && sumAll % 10 != 0) {
-            System.out.printf("""
-*****************************************
-**Credit Card Type: MasterCard
-**Credit Card NUmber: %d
-**Credit Card Digit Length: %d
-**Credit Card Validity Status: InValid
-********************************************\s
-%n         \s
-                  """,card,value.length());
+            cardType = "MasterCard";
+            status = "InValid";
+
         }
-
-
-
 
 //        American Express Card
 
 
         if(check == 3 && checkIndex2 == 7 && value.length() >= 13 && value.length() <= 16 && sumAll % 10 == 0){
-            System.out.printf("""
-*****************************************
-**Credit Card Type: American Express Card
-**Credit Card NUmber: %d
-**Credit Card Digit Length: %d
-**Credit Card Validity Status: Valid
-********************************************\s
-%n         \s
-                  """,card,value.length());
+            cardType = "American Express Card";
+            status = "Valid";
         }
 
         else if(check == 3 && checkIndex2 == 7 && value.length() >= 13 && value.length() <= 16 && sumAll % 10 != 0)  {
-            System.out.printf("""
-*****************************************
-**Credit Card Type: American Express Card
-**Credit Card NUmber: %d
-**Credit Card Digit Length: %d
-**Credit Card Validity Status: InValid
-********************************************\s
-%n         \s
-                  """,card,value.length());
+            cardType = "American Express Card";
+            status = "InValid";
 
         }
-
 
 
 
 //        Discover Cards
         if(check == 6 && value.length() >= 13 && value.length() <= 16 && sumAll % 10 == 0){
-            System.out.printf("""
-*****************************************
-**Credit Card Type: Discover Cards
-**Credit Card NUmber: %d
-**Credit Card Digit Length: %d
-**Credit Card Validity Status: Valid
-********************************************\s
-%n         \s
-                  """,card,value.length());
+            cardType = "Discover Card";
+            status = "Valid";
         }
         else if(check == 6 && value.length() >= 13 && value.length() <= 16 && sumAll % 10 != 0) {
-            System.out.printf("""
-*****************************************
-**Credit Card Type: Discover Cards
-**Credit Card NUmber: %d
-**Credit Card Digit Length: %d
-**Credit Card Validity Status: InValid
-********************************************\s
-%n         \s
-                  """,card,value.length());
+            cardType = "Discover Card";
+            status = "InValid";
         }
-
 
 
 //        VisaCard
 
 
         if (check == 4 && value.length() >= 13 && value.length() <= 16 && sumAll % 10 == 0 ){
-            System.out.printf("""
-*****************************************
-**Credit Card Type: VisaCard
-**Credit Card NUmber: %d
-**Credit Card Digit Length: %d
-**Credit Card Validity Status: Valid
-********************************************\s
-%n         \s
-                  """,card,value.length());
+            cardType = "Visa Card";
+            status = "Valid";
         }
 
         else if (check == 4 && value.length() >= 13 && value.length() <= 16 && sumAll % 10 != 0) {
-            System.out.printf("""
-*****************************************
-**Credit Card Type: VisaCard
-**Credit Card NUmber: %d
-**Credit Card Digit Length: %d
-**Credit Card Validity Status: InValid
-********************************************\s
-%n         \s
-                  """,card,value.length());
+            cardType = "American Express Card";
+            status = "InValid";
         }
 
 if(check < 3 || check > 6){
 
-    System.out.printf("""
-*****************************************
-**Credit Card Type: Invalid Card
-**Credit Card NUmber: %d
-**Credit Card Digit Length: %d
-**Credit Card Validity Status: InValid
-********************************************\s
-%n         \s
-                  """,card,value.length());
+     cardType = "Invalid Card";
+     status = "InValid";
+
 
 }
+
+        System.out.printf("""
+*****************************************
+**Credit Card Type: %s
+**Credit Card Number: %d
+**Credit Card Digit Length: %d
+**Credit Card Validity Status: %s
+********************************************\s
+%n         \s
+                  """,cardType,card,value.length(),status);
+
 
 
     }}
