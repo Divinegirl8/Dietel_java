@@ -68,27 +68,130 @@ int getSecondIndex = pickedDigits.size()-2;
 long check = pickedDigits.get(getFirstIndex);
 long checkIndex2 = pickedDigits.get(getSecondIndex);
 
-        if (check == 4 && value.length() >= 13 && value.length() <= 16 && sumAll % 2 == 0){
-            System.out.println("Visa");
-        }
-        else if(check == 5 && value.length() >= 13 && value.length() <= 16 && sumAll % 2 == 0){
+
+
+
+
+
+
+
+
+
+//        MasterCard
+
+        if (check == 5 && value.length() >= 13 && value.length() <= 16 && sumAll % 10 == 0){
             System.out.printf("""
 *****************************************
 **Credit Card Type: MasterCard
 **Credit Card NUmber: %d
 **Credit Card Digit Length: %d
 **Credit Card Validity Status: Valid
-********************************************           
+********************************************\s
+%n         \s
                   """,card,value.length());
         }
-        else if(check == 3 && checkIndex2 == 7 && value.length() >= 13 && value.length() <= 16){
-            System.out.println("American Express Card");
-        }
-        else if(check == 6 && value.length() >= 13 && value.length() <= 16){
-            System.out.println("Discover Cards");
+
+        else if (check == 5 && value.length() >= 13 && value.length() <= 16 && sumAll % 10 != 0) {
+            System.out.printf("""
+*****************************************
+**Credit Card Type: MasterCard
+**Credit Card NUmber: %d
+**Credit Card Digit Length: %d
+**Credit Card Validity Status: InValid
+********************************************\s
+%n         \s
+                  """,card,value.length());
         }
 
-    }
-    }
 
-//5378576018402626
+
+
+//        American Express Card
+
+
+        if(check == 3 && checkIndex2 == 7 && value.length() >= 13 && value.length() <= 16 && sumAll % 10 == 0){
+            System.out.printf("""
+*****************************************
+**Credit Card Type: American Express Card
+**Credit Card NUmber: %d
+**Credit Card Digit Length: %d
+**Credit Card Validity Status: Valid
+********************************************\s
+%n         \s
+                  """,card,value.length());
+        }
+
+        else if(check == 3 && checkIndex2 == 7 && value.length() >= 13 && value.length() <= 16 && sumAll % 10 != 0)  {
+            System.out.printf("""
+*****************************************
+**Credit Card Type: American Express Card
+**Credit Card NUmber: %d
+**Credit Card Digit Length: %d
+**Credit Card Validity Status: InValid
+********************************************\s
+%n         \s
+                  """,card,value.length());
+
+        }
+
+
+
+
+//        Discover Cards
+        if(check == 6 && value.length() >= 13 && value.length() <= 16 && sumAll % 10 == 0){
+            System.out.printf("""
+*****************************************
+**Credit Card Type: Discover Cards
+**Credit Card NUmber: %d
+**Credit Card Digit Length: %d
+**Credit Card Validity Status: Valid
+********************************************\s
+%n         \s
+                  """,card,value.length());
+        }
+        else if(check == 6 && value.length() >= 13 && value.length() <= 16 && sumAll % 10 != 0) {
+            System.out.printf("""
+*****************************************
+**Credit Card Type: Discover Cards
+**Credit Card NUmber: %d
+**Credit Card Digit Length: %d
+**Credit Card Validity Status: InValid
+********************************************\s
+%n         \s
+                  """,card,value.length());
+        }
+
+
+
+//        VisaCard
+
+
+        if (check == 4 && value.length() >= 13 && value.length() <= 16 && sumAll % 10 == 0 ){
+            System.out.printf("""
+*****************************************
+**Credit Card Type: VisaCard
+**Credit Card NUmber: %d
+**Credit Card Digit Length: %d
+**Credit Card Validity Status: Valid
+********************************************\s
+%n         \s
+                  """,card,value.length());
+        }
+
+        else if (check == 4 && value.length() >= 13 && value.length() <= 16 && sumAll % 10 != 0) {
+            System.out.printf("""
+*****************************************
+**Credit Card Type: VisaCard
+**Credit Card NUmber: %d
+**Credit Card Digit Length: %d
+**Credit Card Validity Status: InValid
+********************************************\s
+%n         \s
+                  """,card,value.length());
+        }
+
+
+    }}
+
+//678576018402626
+//5399831619690404
