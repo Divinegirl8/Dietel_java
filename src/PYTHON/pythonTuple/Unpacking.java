@@ -11,9 +11,4 @@ public class Unpacking {
 
     }
 
-    public static void main(String[] args) {
-       int[] tuple3 = {15, 25, 60, 50, 30, 40, 45, 55};
-
-        System.out.println(unpack(tuple3));
-    }
 }
