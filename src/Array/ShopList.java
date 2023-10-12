@@ -142,7 +142,14 @@ public class ShopList {
 
         System.out.println("How much did the customer give to you?");
         double customer_amount = scan.nextDouble();
-        double balance = customer_amount - billTotal;
+        double balance = 0.0;
+
+        while(customer_amount < billTotal){
+            System.out.println("money is lesser than bill");
+            customer_amount = scan.nextDouble();
+        }
+        if (customer_amount >= billTotal){
+         balance = customer_amount - billTotal;}
 
         System.out.printf("""
         SEMICOLON STORES
