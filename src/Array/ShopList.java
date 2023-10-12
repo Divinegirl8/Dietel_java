@@ -176,9 +176,9 @@ public class ShopList {
                                                   Balance:      %.2f
                 _________________________________________________________________
                 _________________________________________________________________
-                             THANK YOU FOR YOUR PATRONAGE
+                                 THANK YOU FOR YOUR PATRONAGE
                 _________________________________________________________________
-                """,total,discountResult,VAT,billTotal,billTotal,customer_amount);
+                """,total,discountResult,VAT,billTotal,customer_amount,balance);
 
     }
 
