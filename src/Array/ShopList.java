@@ -137,7 +137,7 @@ public class ShopList {
                 _________________________________________________________________
                 THIS IS NOT A RECEIPT KINDLY PAY %.2f
                 _________________________________________________________________
-                """,total,discountResult,VAT,billTotal,billTotal);
+                """,total,discountResult,vatResult,billTotal,billTotal);
 
 
         System.out.println("How much did the customer give to you?");
@@ -178,7 +178,7 @@ public class ShopList {
                 _________________________________________________________________
                                  THANK YOU FOR YOUR PATRONAGE
                 _________________________________________________________________
-                """,total,discountResult,VAT,billTotal,customer_amount,balance);
+                """,total,discountResult,vatResult,billTotal,customer_amount,balance);
 
     }
 
