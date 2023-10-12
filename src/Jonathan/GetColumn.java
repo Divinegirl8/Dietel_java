@@ -9,7 +9,6 @@ int count = 0;
         new_list[count] = dataset[startposition][new_value];
         count++;
     }
-
     return new_list;
 }
 }
