@@ -57,9 +57,17 @@ public class ShopList {
             System.out.println("Add more items? (yes/no)");
             String answer = scan.nextLine().toLowerCase();
 
+
+            while (!answer.equals("yes") && !answer.equals("no")) {
+                System.out.println("Invalid input. Enter 'yes' or 'no'.");
+                System.out.println("Add more items? (yes/no)");
+                answer = scan.nextLine().toLowerCase();
+            }
             if (answer.equals("no")) {
                 question = false;
             }
+
+
 
 
         } while (question);
@@ -127,12 +135,12 @@ public class ShopList {
 
         System.out.printf("""
                 __________________________________________________________________
-                                                Sub Total:      %.2f
-                                                 Discount:      %.2f
-                                              VAT @ 17.50:      %.2f
+                                                Sub Total:       %.2f
+                                                 Discount:       %.2f
+                                              VAT @ 17.50:       %.2f
                 __________________________________________________________________
                 __________________________________________________________________
-                                               Bill Total:      %.2f
+                                               Bill Total:       %.2f
                 _________________________________________________________________
                 _________________________________________________________________
                 THIS IS NOT A RECEIPT KINDLY PAY %.2f
@@ -173,17 +181,17 @@ public class ShopList {
 
         System.out.printf("""
                 __________________________________________________________________
-                                                Sub Total:      %.2f
-                                                 Discount:      %.2f
-                                              VAT @ 17.50:      %.2f
+                                                Sub Total:       %.2f
+                                                 Discount:       %.2f
+                                              VAT @ 17.50:       %.2f
                 __________________________________________________________________
                 __________________________________________________________________
-                                               Bill Total:      %.2f
-                                              Amount Paid:      %.2f
-                                                  Balance:      %.2f
+                                               Bill Total:       %.2f
+                                              Amount Paid:       %.2f
+                                                  Balance:       %.2f
                 _________________________________________________________________
                 _________________________________________________________________
-                                 THANK YOU FOR YOUR PATRONAGE
+                                  THANK YOU FOR YOUR PATRONAGE
                 _________________________________________________________________
                 """,total,discountResult,vatResult,billTotal,customer_amount,balance);
 
