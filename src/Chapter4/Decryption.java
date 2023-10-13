@@ -15,13 +15,16 @@ public class Decryption {
         int count = 0;
         int convert = 0;
 
-
-        while (numberLength != 4) {
+        while (numberLength != 4 || !digit.matches("\\d+")){
             System.out.println("Enter a number consisting of four digits");
             digit = scan.nextLine();
             numberLength = digit.length();
-        }
 
+            }
+
+
+
+        if (digit.matches("\\d+")) {
 
         ArrayList<Integer> array = new ArrayList<>();
         for (int index = 0; index < numberLength; index++) {
@@ -46,4 +49,4 @@ public class Decryption {
         System.out.print(vw + "" + v);
     }
 
-}
+}}

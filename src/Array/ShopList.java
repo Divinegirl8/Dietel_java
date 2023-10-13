@@ -22,7 +22,7 @@ public class ShopList {
             System.out.println("What did the user buy?");
             String product = scan.nextLine();
 
-            if (product.matches("[A-Za-z0-9]+")) {
+            if (product.matches("[A-Za-z0-9 ]+")) {
                 productList.add(product);
             } else {
                 System.out.println("Invalid input. Please enter a value consisting of letters");
@@ -77,10 +77,19 @@ public class ShopList {
         String cashier = scan.nextLine();
 
         System.out.println("How much is the discount");
-        int discount = scan.nextInt();
+        String discount = scan.nextLine();
+
+        while (!discount.matches("\\d+")){
+            System.out.println("Invalid!!! enter a number");
+             discount = scan.nextLine();
+        }
+
+        double discountConvert = 0.0;
+        if (discount.matches("\\d+")){
+         discountConvert = Double.parseDouble(discount);}
 
 
-            List<Double> multiplyNumber = new ArrayList<>();
+        List<Double> multiplyNumber = new ArrayList<>();
 
 //            quantity multiply by price
         for (int index = 0; index < quantityList.size(); index++) {
@@ -101,7 +110,7 @@ public class ShopList {
             total += multiplyNumber.get(temp);
         }
 
-        double discountResult =  (total * discount) / 100;
+        double discountResult =  (total * discountConvert) / 100;
         double vatResult = (total * VAT) / 100;
         double billTotal = total  + vatResult - discountResult;
 
@@ -148,13 +157,29 @@ public class ShopList {
                 """,total,discountResult,vatResult,billTotal,billTotal);
 
 
+//        System.out.println("How much did the customer give to you?");
+//        double customer_amount = scan.nextDouble();
+
         System.out.println("How much did the customer give to you?");
-        double customer_amount = scan.nextDouble();
+        String customer_amt = scan.nextLine();
+
+        double customer_amount = 0.0;
+
+        while (!customer_amt.matches("\\d+")){
+            System.out.println("Invalid input. Please enter a valid number.");
+            customer_amt = scan.nextLine();
+        }
+
+        if(customer_amt.matches("\\d+")){
+            customer_amount = Double.parseDouble(customer_amt);
+        }
+
         double balance = 0.0;
 
         while(customer_amount < billTotal){
             System.out.println("money is lesser than bill");
             customer_amount = scan.nextDouble();
+
         }
         if (customer_amount >= billTotal){
          balance = customer_amount - billTotal;}
@@ -178,7 +203,6 @@ public class ShopList {
                     %20s%8s%13.2f%14.2f
                     """,productList.get(lop),quantityList.get(lop),unitList.get(lop),multiplyNumber.get(lop));
         }
-
         System.out.printf("""
                 __________________________________________________________________
                                                 Sub Total:       %.2f
@@ -195,8 +219,4 @@ public class ShopList {
                 _________________________________________________________________
                 """,total,discountResult,vatResult,billTotal,customer_amount,balance);
 
-    }
-
-
-    }
-
+    }}
