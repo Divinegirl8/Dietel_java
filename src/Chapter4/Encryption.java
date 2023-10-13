@@ -9,20 +9,29 @@ public class Encryption {
 
         System.out.println("Enter a number consisting of four digits");
         String digit = scan.nextLine();
+
+        System.out.println(encryption(digit));
+
+    }
+
+    public static String encryption(String digit) {
         int numberLength = digit.length();
         int count = 0;
         int convert = 0;
+        Scanner scan = new Scanner(System.in);
 
-        while (numberLength != 4 || !digit.matches("\\d+")){
+        while (numberLength != 4 || !digit.matches("\\d+")) {
             System.out.println("Invalid Input, value should consist of positive numbers only");
             digit = scan.nextLine();
             numberLength = digit.length();
 
         }
-
+        StringBuilder variable = new StringBuilder();
+        StringBuilder variable2 = new StringBuilder();
 
 
         if (digit.matches("\\d+")) {
+
 
             ArrayList<Integer> array = new ArrayList<>();
             for (int index = 0; index < numberLength; index++) {
@@ -35,8 +44,7 @@ public class Encryption {
             int divideLength = array.size() / 2;
 
 
-            StringBuilder variable = new StringBuilder();
-            StringBuilder variable2 = new StringBuilder();
+
             for (int first = 0; first < divideLength; first++) {
                 variable.append(array.get(first));
             }
@@ -44,8 +52,8 @@ public class Encryption {
                 variable2.append(array.get(second));
             }
 
-            System.out.print(variable2 + "" + variable);
-        }
 
+        }
+        return variable2 + "" + variable;
     }
 }
