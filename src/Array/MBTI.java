@@ -397,7 +397,7 @@ public class MBTI {
         if(personalityType.equals("ESFJ")){
             System.out.println("""
                     ESFJ
-                         The Executive (16Personalisties)
+                         The Consul (16Personalisties)
                                           
                     The ESFJ Personality Type
                         For Consuls, life is sweetest when it’s shared with others. People with this personality type form the bedrock of many communities,
