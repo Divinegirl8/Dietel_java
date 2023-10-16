@@ -415,7 +415,7 @@ public class MBTI {
                         
                         A Consul (ESFJ) is a person with the Extraverted, Observant, Feeling, and Judging personality traits.
                         They are attentive and people-focused, and they enjoy taking part in their social community. Their achievements are guided by decisive values, 
-                        nd they willingly offer guidance to others.
+                        and they willingly offer guidance to others.
                         """);}
 
         if(personalityType.equals("ISTP")) {
@@ -460,6 +460,12 @@ public class MBTI {
                         Adventurers take each day as it comes, doing what feels right to them in the moment. And they make sure to leave plenty of room in their lives for the
                         unexpected – with the result that many of their most cherished memories are of spontaneous, spur-of-the-moment outings and adventures,
                         whether by themselves or with their loved ones.
+                        
+                        Who is An Adventurer (ISFP)?
+                        
+                        An Adventurer (ISFP) is a person with the Introverted, Observant, Feeling, and Prospecting personality traits.
+                        They tend to have open minds, approaching life, new experiences, and people with grounded warmth. Their ability to stay in
+                        the moment helps them uncover exciting potentials.
                          """);}
 
         if(personalityType.equals("ESTP")) {
