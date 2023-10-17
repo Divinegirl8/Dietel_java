@@ -1,12 +1,10 @@
 package Array;
 
-
-
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class StudentGrade {
-    public static void main(String[] args) {
+public class StudentGradeFunction {
+    public static int students() {
         Scanner scan = new Scanner(System.in);
 
 
@@ -30,7 +28,12 @@ public class StudentGrade {
                 convert = Integer.parseInt(customer);
             }
         }
+        return convert;
+    }
 
+
+    public static int subjects() {
+        Scanner scan = new Scanner(System.in);
 
         System.out.println("How many subject(s) do they offer: ");
         String items = scan.nextLine();
@@ -54,14 +57,17 @@ public class StudentGrade {
             }
         }
 
-        System.out.println("""
-                    Saving >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                    Saved successfully
-                    """);
+      saving();
+        return convert2;
+    }
+
+    public static ArrayList<Integer> addValues = new ArrayList<>();
+    public static ArrayList<Double> averageValue = new ArrayList<>();
+    public static int[][] storeValue(int convert,int convert2){
+        Scanner scan = new Scanner(System.in);
 
         String[][] storage = new String[convert][convert2];
-        int[][] convertion = new int[convert][convert2];
-        int[] totalAdd = new int[convert];
+        int[][] conversion = new int[convert][convert2];
         double[] averageAdd = new double[convert];
         double averageCalculation = 0;
 
@@ -75,69 +81,65 @@ public class StudentGrade {
 
                 storage[row][column] = scan.nextLine();
 
-                while (!storage[row][column].matches("\\d+")) {
-                    System.out.println("Invalid!. The number of score(s) must consist of positive number(s) only \nEnter again ");
+                while (!storage[row][column].matches("\\d+") || Integer.parseInt(storage[row][column]) > 100 || Integer.parseInt(storage[row][column]) < 0) {
+                    System.out.println("Invalid!. The number of score(s) must consist of positive number(s) only \n" +
+                            " or must not be greater than 100 or less than 0 \nEnter again ");
                     storage[row][column] = scan.nextLine();
                 }
 
-                convertion[row][column] = Integer.parseInt(storage[row][column]);
-                total += convertion[row][column];
+                conversion[row][column] = Integer.parseInt(storage[row][column]);
+                total += conversion[row][column];
                 averageCalculation = (double) total / convert2;
 
-                totalAdd[row] = total;
-                averageAdd[row] = averageCalculation;
+
             }
-            System.out.println("""
-                    Saving >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                    Saved successfully
-                    """);
+
+            addValues.add(total);
+            averageValue.add(averageCalculation);
+
+            saving();
         }
-
-        String dash = "_";
-        String showDash = dash.repeat(85);
-
-        System.out.printf("""
-                %s
-                %s%n
-                """,showDash,showDash);
+        dashDisplay();
         System.out.printf("%-15s", "STUDENT ");
         for (int heading = 0; heading < convert2; heading++) {
             System.out.printf("%-16s", "Subject" + (heading + 1));
         }
         System.out.printf("%-14s","  Tot");
         System.out.printf("%-14s%n"," Ave");
-        System.out.printf("""
-                %s
-                %s%n
-                """,showDash,showDash);
+        dashDisplay();
 
-        int[][] check = {sortNumbers(totalAdd)};
-
-        for (int s = 0; s < check.length; s++){
-            System.out.println(s);
-        }
-
-
-        for (int students = 0; students < convertion.length; students++) {
-            System.out.printf("%-16s", "Student " + (students + 1));
-            for (int scores = 0; scores < convertion[students].length; scores++) {
-                System.out.printf("%-16d ", convertion[students][scores]);
-            }
-            System.out.print(totalAdd[students] + "        ");
-            System.out.printf("%8.2f",averageAdd[students]);
-            System.out.println();
-        }
-        System.out.printf("""
-                %s
-                %s%n
-                """,showDash,showDash);
-
-//        int[] number = Arrays.stream(totalAdd).sorted().toArray();
-//        System.out.println(Arrays.toString(number));
-
-
-
+        return conversion;
     }
+
+public static void displayInformation(int[][] information){
+    for (int students = 0; students < information.length; students++) {
+        System.out.printf("%-16s", "Student " + (students + 1));
+        for (int scores = 0; scores < information[students].length; scores++) {
+            System.out.printf("%-16d ", information[students][scores]);
+        }
+        System.out.printf("%-6d",addValues.get(students));
+        System.out.printf("%10.2f", averageValue.get(students));
+        System.out.println();
+    }
+    dashDisplay();
+}
+
+    public static void saving(){
+        System.out.println("""
+                Saving >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                Saved successfully
+                """);
+    }
+
+    public static void dashDisplay(){
+        for (int count = 0; count < 2; count++){
+            for (int count2 = 0; count2 < 105; count2++){
+                System.out.print("-");
+            }
+            System.out.println();
+
+    }}
+
     public static int[] sortNumbers(int[] numbers){
         for(int row = 0; row < numbers.length; row++){
             for (int column = row; column < numbers.length-1; column++){
@@ -151,4 +153,16 @@ public class StudentGrade {
         return numbers;
     }
 
+
+    public static void main(String[] args) {
+        displayInformation(storeValue(students(), subjects()));
+
+    }
 }
+
+
+
+
+
+
+
