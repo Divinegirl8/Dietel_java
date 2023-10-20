@@ -1,7 +1,11 @@
 package Array;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.Scanner;
+
+import static java.util.Arrays.binarySearch;
 
 public class StudentGradeFunction {
     public static int students() {
@@ -104,14 +108,14 @@ public class StudentGradeFunction {
         for (int heading = 0; heading < convert2; heading++) {
             System.out.printf("%-16s", "Subject" + (heading + 1));
         }
-        System.out.printf("%-14s","  Tot");
-        System.out.printf("%-14s%n"," Ave");
+        System.out.printf("%-16s","  Tot");
+        System.out.printf("%-10s%n"," Ave");
         dashDisplay();
 
         return conversion;
     }
 
-public static void displayInformation(int[][] information){
+public static int[][] displayInformation(int[][] information){
     for (int students = 0; students < information.length; students++) {
         System.out.printf("%-16s", "Student " + (students + 1));
         for (int scores = 0; scores < information[students].length; scores++) {
@@ -122,7 +126,91 @@ public static void displayInformation(int[][] information){
         System.out.println();
     }
     dashDisplay();
+    return information;
 }
+
+
+
+        public static ArrayList<String> maxSubject = new ArrayList<String>();
+        public static ArrayList<String> minSubject = new ArrayList<String>();
+        public static ArrayList<Integer> calculateSum = new ArrayList<>();
+        public static ArrayList<Double> calculateAverage = new ArrayList<>();
+        public static ArrayList<Integer> passesNumber = new ArrayList<>();
+        public static ArrayList<Integer> failureNumber = new ArrayList<>();
+
+        public static void calculateSubject(int[][] value) {
+            for (int column = 0; column < value[0].length; column++) {
+                int count = 0;
+                int total = 0;
+                double average = 0;
+                int passes = 0;
+                int fail = 0;
+
+                int[] new_list = new int[value.length];
+                for (int temp = 0; temp < value.length; temp++) {
+                    new_list[count] = value[temp][column];
+                    total += new_list[count];
+
+                    if (new_list[count] > 50) {
+                        ++passes;
+                    } else {
+                        ++fail;
+                    }
+                    count++;
+                }
+
+                passesNumber.add(passes);
+                failureNumber.add(fail);
+                calculateSum.add(total);
+                average = (double) total / value.length;
+                calculateAverage.add(average);
+
+                int max = new_list[0];
+                int min = new_list[0];
+                for (int num : new_list) {
+                    if (num > max) {
+                        max = num;
+                    }
+                    if (num < min) {
+                        min = num;
+                    }
+                }
+                maxSubject.add(String.valueOf(max));
+                minSubject.add(String.valueOf(min));
+            }
+
+            System.out.println("SUBJECT SUMMARY");
+            for (int count = 0; count < maxSubject.size(); count++) {
+                if (Integer.parseInt(maxSubject.get(count)) > Integer.parseInt(minSubject.get(count))){
+                System.out.printf("""
+                    SUBJECT %d
+                    Highest scoring student is: %s
+                    Lowest scoring student is: %s
+                    Total Score is: %d
+                    Average Score is: %.2f
+                    Number of passes: %d
+                    Number of failures: %d%n
+                    """, count + 1, maxSubject.get(count), minSubject.get(count),
+                        calculateSum.get(count), calculateAverage.get(count),
+                        passesNumber.get(count), failureNumber.get(count));
+            }
+            else {
+                    System.out.printf("""
+                SUBJECT %d
+                Highest scoring student is: %s
+                Lowest scoring student is: None
+                Total Score is: %d
+                Average Score is: %.2f
+                Number of passes: %d
+                Number of failure: %d%n
+                """,count+1,maxSubject.get(count), calculateSum.get(count),calculateAverage.get(count),passesNumber.get(count),failureNumber.get(count));
+                }
+            }
+
+
+        }
+
+
 
     public static void saving(){
         System.out.println("""
@@ -140,22 +228,61 @@ public static void displayInformation(int[][] information){
 
     }}
 
-    public static int[] sortNumbers(int[] numbers){
-        for(int row = 0; row < numbers.length; row++){
-            for (int column = row; column < numbers.length-1; column++){
-                if (numbers[row] >  numbers[column+1]){
-                    int temp = numbers[row];
-                    numbers[row] = numbers[column+1];
-                    numbers[column+1] = temp;
+//    public static int[] sortNumbers(int[] numbers){
+//        for(int row = 0; row < numbers.length; row++){
+//            for (int column = row; column < numbers.length-1; column++){
+//                if (numbers[row] >  numbers[column+1]){
+//                    int temp = numbers[row];
+//                    numbers[row] = numbers[column+1];
+//                    numbers[column+1] = temp;
+//                }
+//            }
+//        }
+//        return numbers;
+//    }
+
+
+
+    public static ArrayList<Integer> sortNumbers(ArrayList<Integer> numbers){
+        for (int row = 0; row < numbers.size(); row++) {
+            for (int column = row; column < numbers.size() - 1; column++) {
+                if (numbers.get(row) < numbers.get(column + 1)) {
+                    int temp = numbers.get(row);
+                    numbers.set(row, numbers.get(column + 1));
+                    numbers.set(column + 1, temp);
                 }
             }
         }
         return numbers;
     }
 
+    public static ArrayList<Integer> sortTotal(){
+            return sortNumbers(addValues);
+    }
+
+    public static ArrayList<Integer>  studentPosition = new ArrayList<>();
+
+    public static int[] position() {
+        int[] studentArray = new int[addValues.size()];
+
+        Arrays.fill(studentArray, 1);
+        for (int counts = 0;  counts < addValues.size(); counts++){
+            for (Integer addValue : addValues) {
+                if (addValues.get(counts) < addValue) {
+                    studentArray[counts] += 1;
+                }
+            }
+        }
+
+            return studentArray;
+
+    }
+
 
     public static void main(String[] args) {
-        displayInformation(storeValue(students(), subjects()));
+        calculateSubject(displayInformation(storeValue(students(), subjects())));
+
+        System.out.println(Arrays.toString(position()));
 
     }
 }

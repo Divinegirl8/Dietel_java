@@ -1,0 +1,134 @@
+package Array;
+
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class StudentGrade {
+
+    public static int student(int number){
+        return number;
+    }
+
+    public static int subject(int number){
+        return number;
+    }
+
+    public static ArrayList<ArrayList<Integer>> storeValueList = new ArrayList<ArrayList<Integer>>();
+    public static int[][] storeValue(int convert,int convert2){
+        Scanner scan = new Scanner(System.in);
+
+        String[][] storage = new String[convert][convert2];
+        int[][] conversion = new int[convert][convert2];
+
+        for (int row = 0; row < convert; row++) {
+            int total = 0;
+
+            ArrayList<Integer> scores = new ArrayList<>();
+            for (int column = 0; column < convert2; column++) {
+                System.out.print("Entering score for student " + (row + 1) + "\n");
+                System.out.print("Enter score for subject " + (column + 1) + ": ");
+
+                storage[row][column] = scan.nextLine();
+
+                while (!storage[row][column].matches("\\d+") || Integer.parseInt(storage[row][column]) > 100 || Integer.parseInt(storage[row][column]) < 0) {
+                    System.out.println("Invalid!. The number of score(s) must consist of positive number(s) only \n" +
+                            " or must not be greater than 100 or less than 0 \nEnter again ");
+                    storage[row][column] = scan.nextLine();
+                }
+                conversion[row][column] = Integer.parseInt(storage[row][column]);
+                scores.add(conversion[row][column]);
+            }
+            storeValueList.add(scores);
+            saving();
+        }
+
+
+    return conversion;
+    }
+
+    public static ArrayList<Integer> totalList = new ArrayList<>();
+
+    public static ArrayList<Integer> total(int[][] value){
+        for (int[] count : value){
+            int sum = 0;
+            for (int index : count){
+                sum += index;
+
+            }
+            totalList.add(sum);
+        }
+
+        return totalList;
+    }
+
+public static ArrayList<Double> averageList = new ArrayList<>();
+
+    public static ArrayList<Double> average(ArrayList<Integer> number,int integer){
+        for (Integer index : number){
+            double ave = (double) index / integer;
+            averageList.add(ave);
+        }
+        return averageList;
+    }
+
+    public static ArrayList<ArrayList<Integer>> getSubjectList = new ArrayList<ArrayList<Integer>>();
+
+    public static ArrayList<ArrayList<Integer>> getSubject(ArrayList<ArrayList<Integer>> integer) {
+
+        for (int col = 0; col < integer.get(0).size(); col++) {
+            ArrayList<Integer> column = new ArrayList<>();
+            for (int row = 0; row < integer.size(); row++) {
+                column.add(integer.get(row).get(col));
+            }
+            getSubjectList.add(column);
+        }
+
+        return getSubjectList;
+    }
+
+    public static ArrayList<Integer> totalSubject = new ArrayList<>();
+
+    public static ArrayList<Integer> totalSubjectCal(ArrayList<ArrayList<Integer>> number){
+        for (int index = 0; index < number.get(0).size(); index++){
+            int total = 0;
+            for (int temp = 0; temp < number.size(); temp++){
+                total += number.get(temp).get(index);
+            }
+            totalSubject.add(total);
+        }
+        return totalSubject;
+    }
+
+public static ArrayList<Double> averageSubjectList = new ArrayList<>();
+
+    public static ArrayList<Double> averageSubject (ArrayList<Integer> number,int value){
+        for (Integer index : number){
+            double average = (double) index / value;
+            averageSubjectList.add(average);
+        }
+        return averageSubjectList;
+    }
+
+    public static ArrayList<Integer> maximumScoreList = new ArrayList<>();
+
+    public static ArrayList<Integer> maximumScore(ArrayList<ArrayList<Integer>> number){
+        for (int value = 0; value < number.get(0).size(); value++){
+            int max = 0;
+            for (ArrayList<Integer> integers : number) {
+                if (max < integers.get(value)) {
+                    max = integers.get(value);
+                }
+            }
+            maximumScoreList.add(max);}
+        return maximumScoreList;
+    }
+
+
+    public static void saving(){
+        System.out.println("""
+                Saving >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                Saved successfully
+                """);
+    }
+            }

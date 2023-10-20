@@ -312,15 +312,12 @@ public static double divideOrSquare(int number){
 
 
     public static int arrayMaxNumber(int[] integer){
-        int largest = integer[0];
+        int largest = 0;
         for (int count = 0; count < integer.length; count++){
             if (integer[count] > largest){
                 largest = integer[count];
             }
         }
-
-
-
         return largest;
     }
 
