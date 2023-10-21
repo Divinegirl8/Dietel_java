@@ -24,7 +24,6 @@ public class BinaryDigit {
             int result = number / Function.numberPower(10, count) % 10;
             count++;
 
-
             int result2 = result * Function.numberPower(2, sumUp);
             sumUp++;
 

@@ -122,7 +122,7 @@ public static int[][] displayInformation(int[][] information){
             System.out.printf("%-16d ", information[students][scores]);
         }
         System.out.printf("%-6d",addValues.get(students));
-        System.out.printf("%10.2f", averageValue.get(students));
+//        System.out.printf("%10.2f", averageValue.get(students));
         System.out.println();
     }
     dashDisplay();

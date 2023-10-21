@@ -48,16 +48,66 @@ public class StudentGradeMain {
                 if (subject.matches("\\d+")) {
                     convert2 = Integer.parseInt(subject);
                 }
-            }}
+            }
+        }
         saving();
 
-        System.out.println(total(storeValue(convert, convert2)));
+        total(storeValue(convert, convert2));
+        average(totalList, convert2);
+        positionScore(totalList);
         totalSubjectCal(storeValueList);
-        System.out.println(totalSubject);
-        averageSubject(totalSubject,convert);
-        System.out.println(averageSubjectList);
-        System.out.println(maximumScore(storeValueList));
-        System.out.println(maximumScoreList);
+        averageSubject(totalSubject, convert);
+        maximumScore(storeValueList);
+        minimumScores(storeValueList);
+        passes(storeValueList);
+        fail(storeValueList);
+;
+
+        for (int count = 0; count < storeValueList.size(); count++) {
+            System.out.printf("%-16s", "Student " + (count + 1));
+            for (int count2 = 0; count2 < storeValueList.get(count).size(); count2++) {
+                System.out.printf("%-16d ", storeValueList.get(count).get(count2));
+            }
+            System.out.printf("%-6d", totalList.get(count));
+            System.out.printf("%10.2f", averageList.get(count));
+            System.out.printf("%12s", addPosition.get(count));
+            System.out.println();
+
+        }
+dashDisplay(105);
+        System.out.println("SUBJECT SUMMARY");
+        for (int value = 0; value < maximumScoreList.size(); value++) {
+            if (maximumScoreList.get(value) > minimumScoreList.get(value)) {
+                System.out.printf("""
+                                SUBJECT %d
+                                Highest scoring student is: %s
+                                Lowest scoring student is: %s
+                                Total Score is: %d
+                                Average Score is: %.2f
+                                Number of passes: %d
+                                Number of failures: %d%n
+                                """, value + 1, maximumScoreList.get(value), minimumScoreList.get(value),
+                        totalSubject.get(value), averageSubjectList.get(value),
+                        passesList.get(value), failList.get(value));
+            }
+            else {
+
+                    System.out.printf("""
+                                SUBJECT %d
+                                Highest scoring student is: %s
+                                Lowest scoring student is: None
+                                Total Score is: %d
+                                Average Score is: %.2f
+                                Number of passes: %d
+                                Number of failures: %d%n
+                                """, value + 1, maximumScoreList.get(value),
+                            totalSubject.get(value), averageSubjectList.get(value),
+                            passesList.get(value), failList.get(value));
+            }
+        }
+
     }
 
-}
+    }
+
+

@@ -2,6 +2,7 @@ package Array;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class StudentGrade {
@@ -42,7 +43,15 @@ public class StudentGrade {
             storeValueList.add(scores);
             saving();
         }
-
+        dashDisplay(105);
+        System.out.printf("%-15s", "STUDENT ");
+        for (int heading = 0; heading < convert2; heading++) {
+            System.out.printf("%-16s", "Subject" + (heading + 1));
+        }
+        System.out.printf("%-15s","  Tot");
+        System.out.printf("%-12s"," Ave");
+        System.out.printf("%-13s%n"," Pos");
+        dashDisplay(105);
 
     return conversion;
     }
@@ -124,11 +133,82 @@ public static ArrayList<Double> averageSubjectList = new ArrayList<>();
         return maximumScoreList;
     }
 
+    public static ArrayList<Integer> minimumScoreList = new ArrayList<>();
+
+    public static ArrayList<Integer> minimumScores(ArrayList<ArrayList<Integer>> number) {
+        for (int index = 0; index < number.get(0).size(); index++) {
+            int min = Integer.MAX_VALUE;
+            for (ArrayList<Integer> integer : number) {
+                if (min > integer.get(index)) {
+                    min = integer.get(index);
+                }
+            }
+            minimumScoreList.add(min);}
+        return minimumScoreList;
+    }
+
+    public static ArrayList<Integer> passesList = new ArrayList<>();
+    public static ArrayList<Integer> passes(ArrayList<ArrayList<Integer>> number){
+        for (int index = 0; index < number.get(0).size(); index++){
+            int pass = 0;
+            for (ArrayList<Integer> temp : number){
+                if (temp.get(index) >= 50){
+                    ++pass;
+                }
+            }
+            passesList.add(pass);
+        }
+        return passesList;
+    }
+
+    public static ArrayList<Integer> failList = new ArrayList<>();
+    public static ArrayList<Integer> fail(ArrayList<ArrayList<Integer>> number){
+        for (int temp = 0; temp < number.get(0).size();temp++){
+            int fail = 0;
+            for (ArrayList<Integer> value : number){
+                if (value.get(temp) < 50){
+                    ++fail;
+                }
+            }
+            failList.add(fail);
+        }
+        return failList;
+    }
+
+
+
+    public static ArrayList<String> addPosition = new ArrayList<String>();
+    public static ArrayList<String> positionScore (ArrayList<Integer> number){
+        int[] new_value = new  int[number.size()];
+
+        Arrays.fill(new_value,1);
+        for (int count = 0; count < number.size(); count++){
+            for (Integer index : number){
+                if (number.get(count) < index){
+                    new_value[count] += 1;
+                }
+            }
+            addPosition.add(String.valueOf(new_value[count]));
+        }
+
+        return addPosition;
+    }
+
 
     public static void saving(){
         System.out.println("""
                 Saving >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                 Saved successfully
                 """);
+    }
+
+    public static void dashDisplay(int number){
+        for (int row = 0; row < 2; row++){
+            for (int index = 0; index < number; index++){
+                System.out.print("-");
+            }
+            System.out.println();
+        }
+
     }
             }
