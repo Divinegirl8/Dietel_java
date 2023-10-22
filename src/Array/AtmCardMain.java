@@ -3,7 +3,7 @@ package Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class AtmCard {
+public class AtmCardMain {
 
 
 

@@ -2,7 +2,7 @@ package BinarySnacks;
 import static  Function.Function.numberPower;
 
 public class BinaryFunction {
-    public static String decimalToBinary(int numbers){
+    public static int decimalToBinary(int numbers){
         int digit = 0;
         if (numbers < 0){
             digit = numbers * -1;
@@ -28,7 +28,7 @@ public class BinaryFunction {
            result += word;
         }
 
-        return result;
+        return Integer.parseInt(result);
     }
 
     public static int binaryToDecimal(int numbers){
