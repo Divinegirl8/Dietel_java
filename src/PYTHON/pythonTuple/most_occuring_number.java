@@ -26,6 +26,8 @@ public class most_occuring_number {
             }
         }
 
+        System.out.println(listDigit);
+
 
     }
 }

@@ -11,6 +11,9 @@ class CeaserCipherTest {
     assertEquals("ebiil",encryptWord("hello"));
     assertEquals("afsfkb",encryptWord("divine"));
     assertEquals("Irzhv",encryptWord("Lucky"));
+    assertEquals("cofbka",encryptWord("friend"));
+    assertEquals("DLXQ",encryptWord("GOAT"));
+
 }
 
 @Test

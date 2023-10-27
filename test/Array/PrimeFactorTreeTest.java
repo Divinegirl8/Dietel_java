@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
+import static Array.VariableLength.hcfOf;
 import static org.junit.jupiter.api.Assertions.*;
 import static Array.PrimeFactorTree.*;
 
@@ -13,22 +14,23 @@ class PrimeFactorTreeTest {
 
     void testPrimeTree(){
         int number = 310;
-        ArrayList<Integer> expected = primeTree(number);
-        assertEquals(5,expected.get(1));
+        int[] result = {2,5,31};
+
+        assertArrayEquals(result,primeTree(number));
     }
 
     @Test
     void testPrimeTreeTwo(){
         int number = 12;
-        ArrayList<Integer> expected = primeTree(number);
-        assertEquals(2,expected.get(0));
-        assertEquals(3,expected.get(2));
+        int[] result = {2,2,3};
+        assertArrayEquals(result,primeTree(number));
+
     }
 
     @Test
 
     void testPrimeTreeThree(){
-        ArrayList<Integer> expected = primeTree(-13);
-        assertEquals(13,expected.get(0));
+         int[] result = {2,2};
+        assertArrayEquals(result,primeTree(4));
     }
 }

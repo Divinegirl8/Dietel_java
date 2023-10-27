@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
+import java.lang.*;
 
 import static java.util.Arrays.binarySearch;
 
@@ -36,7 +37,7 @@ public class StudentGradeFunction {
     }
 
 
-    public static int subjects() {
+    public static int subjects() throws InterruptedException {
         Scanner scan = new Scanner(System.in);
 
         System.out.println("How many subject(s) do they offer: ");
@@ -67,7 +68,7 @@ public class StudentGradeFunction {
 
     public static ArrayList<Integer> addValues = new ArrayList<>();
     public static ArrayList<Double> averageValue = new ArrayList<>();
-    public static int[][] storeValue(int convert,int convert2){
+    public static int[][] storeValue(int convert,int convert2) throws InterruptedException {
         Scanner scan = new Scanner(System.in);
 
         String[][] storage = new String[convert][convert2];
@@ -110,6 +111,7 @@ public class StudentGradeFunction {
         }
         System.out.printf("%-16s","  Tot");
         System.out.printf("%-10s%n"," Ave");
+        System.out.printf("%-16s","  Pos");
         dashDisplay();
 
         return conversion;
@@ -122,7 +124,7 @@ public static int[][] displayInformation(int[][] information){
             System.out.printf("%-16d ", information[students][scores]);
         }
         System.out.printf("%-6d",addValues.get(students));
-//        System.out.printf("%10.2f", averageValue.get(students));
+        System.out.printf("%10.2f", averageValue.get(students));
         System.out.println();
     }
     dashDisplay();
@@ -212,11 +214,19 @@ public static int[][] displayInformation(int[][] information){
 
 
 
-    public static void saving(){
-        System.out.println("""
-                Saving >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                Saved successfully
-                """);
+    public static void saving() throws InterruptedException {
+
+            String symbol = " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
+
+        System.out.print("Saving ");
+
+        for (int index = 0; index < symbol.length();index++){
+            System.out.print(symbol.charAt(index));
+            java.lang.Thread.sleep(100);
+        }
+        System.out.println();
+        System.out.println("Saved successfully");
+        System.out.println();
     }
 
     public static void dashDisplay(){
@@ -279,7 +289,7 @@ public static int[][] displayInformation(int[][] information){
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         calculateSubject(displayInformation(storeValue(students(), subjects())));
 
         System.out.println(Arrays.toString(position()));

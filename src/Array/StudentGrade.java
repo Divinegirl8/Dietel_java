@@ -16,7 +16,7 @@ public class StudentGrade {
     }
 
     public static ArrayList<ArrayList<Integer>> storeValueList = new ArrayList<ArrayList<Integer>>();
-    public static int[][] storeValue(int convert,int convert2){
+    public static int[][] storeValue(int convert,int convert2) throws InterruptedException {
         Scanner scan = new Scanner(System.in);
 
         String[][] storage = new String[convert][convert2];
@@ -194,12 +194,19 @@ public static ArrayList<Double> averageSubjectList = new ArrayList<>();
         return addPosition;
     }
 
+    public static void saving() throws InterruptedException {
 
-    public static void saving(){
-        System.out.println("""
-                Saving >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                Saved successfully
-                """);
+        String symbol = " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
+
+        System.out.print("Saving ");
+
+        for (int index = 0; index < symbol.length();index++){
+            System.out.print(symbol.charAt(index));
+            java.lang.Thread.sleep(100);
+        }
+        System.out.println();
+        System.out.println("Saved successfully");
+        System.out.println();
     }
 
     public static void dashDisplay(int number){
@@ -211,4 +218,7 @@ public static ArrayList<Double> averageSubjectList = new ArrayList<>();
         }
 
     }
+
+
+
             }

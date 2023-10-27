@@ -52,6 +52,7 @@ public class AtmCardMain {
 
 
 
+
 // Odd position
         int sumOdd = 0;
         for (int index = 0; index < value.length(); index+=2) {
@@ -121,7 +122,7 @@ long checkIndex2 = pickedDigits.get(getSecondIndex);
         }
 
         else if (check == 4 && value.length() >= 13 && value.length() <= 16 && sumAll % 10 != 0) {
-            cardType = "American Express Card";
+            cardType = "Visa Card";
             status = "InValid";
         }
 

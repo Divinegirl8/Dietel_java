@@ -5,7 +5,7 @@ import java.util.Scanner;
 import static Array.StudentGrade.*;
 
 public class StudentGradeMain {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Scanner scan = new Scanner(System.in);
 
         System.out.println("How many student(s) do you have: ");
