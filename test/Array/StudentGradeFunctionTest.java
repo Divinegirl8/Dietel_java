@@ -122,13 +122,8 @@ class StudentGradeFunctionTest {
     @Test
 
     void passScore(){
-        ArrayList<ArrayList<Integer>> list = new ArrayList<>();
-        list.add(new ArrayList<>(List.of(67,21,49)));
-        list.add(new ArrayList<>(List.of(98,62,56)));
-        list.add(new ArrayList<>(List.of(93,34,27)));
-        list.add(new ArrayList<>(List.of(78,83,66)));
-
-        int[] value = passes(list);
+        int[][] valueCheck = {{67,21,49},{98,62,56},{93,34,27},{78,83,66}};
+        int[] value = passes(valueCheck);
         int[] expected = {4,2,2};
        assertArrayEquals(expected,value);
     }
@@ -136,13 +131,8 @@ class StudentGradeFunctionTest {
     @Test
 
     void failScore() {
-        ArrayList<ArrayList<Integer>> list = new ArrayList<>();
-        list.add(new ArrayList<>(List.of(67,21,49)));
-        list.add(new ArrayList<>(List.of(98,62,56)));
-        list.add(new ArrayList<>(List.of(93,34,27)));
-        list.add(new ArrayList<>(List.of(78,83,66)));
-
-        int[] value = fail(list);
+        int[][] valueCheck = {{67,21,49},{98,62,56},{93,34,27},{78,83,66}};
+        int[] value = fail(valueCheck);
         int[] expected = {0,2,2};
         assertArrayEquals(expected,value);
 
@@ -161,9 +151,81 @@ class StudentGradeFunctionTest {
 
     }
 
+    @Test
+
+    void testHardestSubject(){
+        int[][] valueCheck = {{67,21,49},{98,62,56},{93,34,27},{78,83,66}};
+        int[] value = fail(valueCheck);
+        int result = getHardestSubject(value);
+        assertEquals(2,result);
+    }
+
+    @Test
+
+    void testHardestSubjectIndex(){
+        int[][] valueCheck = {{67,21,49},{98,62,56},{93,34,27},{78,83,66}};
+        int[] value = fail(valueCheck);
+        int result = getHardestSubjectIndex(value);
+        assertEquals(2,result);
+    }
+
+    @Test
+
+    void testEasiestSubject(){
+        int[][] valueCheck = {{67,21,49},{98,62,56},{93,34,27},{78,83,66}};
+        int[] value = passes(valueCheck);
+        int result = getEasiestSubject(value);
+        assertEquals(4,result);
+    }
+
+    @Test
+    void testEasiestSubjectIndex(){
+        int[][] valueCheck = {{67,21,49},{98,62,56},{93,34,27},{78,83,66}};
+        int[] value = passes(valueCheck);
+        int result = getEasiestSubjectIndex(value);
+        assertEquals(1,result);
+    }
+
+    @Test
+
+    void testOverallBestStudent(){
+        int[][] valueCheck = {{67,21,49},{98,62,56},{93,34,27},{78,83,66}};
+        int expected = 98;
+        int output = getOverallBest(valueCheck);
+        assertEquals(expected,output);
+
+    }
+
+    @Test
+
+    void testOverallBestSubjectIndex(){
+        int[][] valueCheck = {{67,21,49},{98,62,56},{93,34,27},{78,83,66}};
+        int expected = 1;
+        int output = getOverallBestIndex(valueCheck);
+        assertEquals(expected,output);
+
+    }
 
 
+    @Test
+
+    void testOverallWorstStudent(){
+        int[][] valueCheck = {{67,21,49},{98,62,56},{93,34,27},{78,83,66}};
+        int expected = 21;
+        int output = getOverallWorst(valueCheck);
+        assertEquals(expected,output);
+
+    }
+
+    @Test
+
+    void testOverallWorstSubjectIndex() {
+        int[][] valueCheck = {{67, 21, 49}, {98, 62, 56}, {93, 34, 27}, {78, 83, 66}};
+        int expected = 2;
+        int output = getOverallWorstIndex(valueCheck);
+        assertEquals(expected, output);
 
 
+    }
 
-}
+    }

@@ -189,57 +189,49 @@ public static ArrayList<Double> averageSubjectList = new ArrayList<>();
     }
 
     public static ArrayList<Integer> passesList = new ArrayList<>();
-    public static int[] passes(ArrayList<ArrayList<Integer>> number){
-        for (int index = 0; index < number.get(0).size(); index++){
+    public static int[] passes(int[][] number){
+        int[] passCount = new int[number[0].length];
+        for (int index = 0; index < number[0].length; index++){
             int pass = 0;
-            for (ArrayList<Integer> temp : number){
-                if (temp.get(index) >= 50){
+            for (int column = 0; column < number.length; column++){
+                if (number[column][index] >= 50){
                     ++pass;
                 }
             }
             passesList.add(pass);
+            passCount[index] = pass;
         }
-        return convertToArray(passesList);
+        return passCount;
     }
 
+
+
+
     public static ArrayList<Integer> failList = new ArrayList<>();
-    public static int[] fail(ArrayList<ArrayList<Integer>> number){
-        for (int temp = 0; temp < number.get(0).size();temp++){
+
+    public static int[] fail(int[][] number) {
+        int[] failCount = new int[number[0].length];
+
+        for (int column = 0; column < number[0].length; column++) {
             int fail = 0;
-            for (ArrayList<Integer> value : number){
-                if (value.get(temp) < 50){
+            for (int row = 0; row < number.length; row++) {
+                if (number[row][column] < 50) {
                     ++fail;
                 }
             }
             failList.add(fail);
+            failCount[column] = fail;
         }
-        return convertToArray(failList);
+        return failCount;
     }
 
 
-//    public static ArrayList<Integer> failList = new ArrayList<>();
-//    public static int[] fail(int[][] number){
-//        int[] failCount= new int[number.length];
-//        for (int temp = 0; temp < number.length;temp++){
-//            int fail = 0;
-//            for (int column = 0; column < number[temp].length; column++){
-//                if (number[temp][column] < 50){
-//                    ++fail;
-//                }
-//            }
-//            failList.add(fail);
-//            failCount[temp] = fail;
-//        }
-//        return failCount;
-//    }
-
-
     public static int hardest = 0;
-    public static int getHardestSubject(ArrayList<Integer> subject){
+    public static int getHardestSubject(int[] subject){
         int max = 0;
-        for (int index = 0; index < subject.size();index++){
-            if (max < subject.get(index)){
-                max = subject.get(index);
+        for (int index = 0; index < subject.length;index++){
+            if (max < subject[index]){
+                max = subject[index];
             }
         }
         hardest = max;
@@ -247,18 +239,111 @@ public static ArrayList<Double> averageSubjectList = new ArrayList<>();
     }
 
     public static int hardestIndex = 0;
-    public static int getHardestSubjectIndex(ArrayList<Integer> subject){
+    public static int getHardestSubjectIndex(int[] subject){
         int max = 0;
         int indexHardest = 0;
-        for (int index = 0; index < subject.size();index++){
-            if (max < subject.get(index)){
-                max = subject.get(index);
+        for (int index = 0; index < subject.length;index++){
+            if (max < subject[index]){
+                max = subject[index];
                 indexHardest = index + 1;
             }
             hardestIndex = indexHardest;
         }
         return indexHardest;
     }
+
+
+
+
+    public static int easiest = 0;
+    public static int getEasiestSubject(int[] subject){
+        int min = 0;
+        for (int index = 0; index < subject.length;index++){
+            if (min < subject[index]){
+                min = subject[index];
+            }
+        }
+        easiest = min;
+        return min;
+    }
+
+    public static int easiestIndex = 0;
+    public static int getEasiestSubjectIndex(int[] subject){
+        int min = 0;
+        int indexEasiest = 0;
+        for (int index = 0; index < subject.length;index++){
+            if (min < subject[index]){
+                min = subject[index];
+                indexEasiest = index + 1;
+            }
+        }
+        easiestIndex = indexEasiest + 1;
+        return indexEasiest;
+    }
+
+    public static int overall = 0;
+    public static int getOverallBest(int[][] student){
+        int max = 0;
+        for (int row  = 0; row < student.length; row++){
+            for (int column = 0; column < student[row].length; column++){
+                if (max < student[row][column]){
+                    max = student[row][column];
+                }
+            }
+        }
+        overall = max;
+        return max;
+    }
+
+
+    public static int overallBestIndex = 0;
+    public static int getOverallBestIndex(int[][] student){
+        int max = 0;
+        int bestIndex = 0;
+        for (int row  = 0; row < student.length; row++){
+            for (int column = 0; column < student[row].length; column++){
+                if (max < student[row][column]){
+                    max = student[row][column];
+                    bestIndex = column + 1;
+                }
+            }
+
+        }
+        overallBestIndex = bestIndex;
+        return bestIndex;
+    }
+
+    public static int overallWorst = 0;
+    public static int getOverallWorst(int[][] student){
+        int min = Integer.MAX_VALUE;
+        for (int row  = 0; row < student.length; row++){
+            for (int column = 0; column < student[row].length; column++){
+                if (min > student[row][column]){
+                    min = student[row][column];
+                }
+            }
+        }
+        overallWorst = min;
+        return min;
+    }
+
+
+    public static int overallWorstIndex = 0;
+    public static int getOverallWorstIndex(int[][] student){
+        int min = Integer.MAX_VALUE;
+        int worstIndex = 0;
+        for (int row  = 0; row < student.length; row++){
+            for (int column = 0; column < student[row].length; column++){
+                if (min > student[row][column]){
+                    min = student[row][column];
+                    worstIndex = column+1;
+                }
+            }
+        }
+        overallWorstIndex = min;
+        return worstIndex;
+    }
+
 
 
     public static int[] convertToArray(ArrayList<Integer> number){

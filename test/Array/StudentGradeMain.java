@@ -59,8 +59,9 @@ public class StudentGradeMain {
         averageSubject(totalSubject, convert);
         maximumScore(storeValueList);
         minimumScores(storeValueList);
-        passes(storeValueList);
-        fail(storeValueList);
+        passes(convertToArrayNested(storeValueList));
+        fail(convertToArrayNested(storeValueList));
+
 
 
         for (int count = 0; count < storeValueList.size(); count++) {
@@ -108,8 +109,15 @@ dashDisplay(105);
 
 
         System.out.printf("""
-                The hardest subject is Subject %d with %d failures
-                """,getHardestSubjectIndex(failList),getHardestSubject(failList));
+                The hardest subject is Subject %d with %d failure(s)
+                The easiest subject is Subject %d with %d pass(es)
+                The overall Highest score is scored by Student in subject %d scoring %d
+                The overall Lowest score is scored by Student in subject %d scoring %d
+                """,getHardestSubjectIndex(convertToArray(failList)),getHardestSubject(convertToArray(failList)),
+                    getEasiestSubjectIndex(convertToArray(passesList)),getEasiestSubject(convertToArray(passesList)),
+                    getOverallBestIndex(convertToArrayNested(storeValueList)),getOverallBest(convertToArrayNested(storeValueList)),
+                   getOverallWorstIndex(convertToArrayNested(storeValueList)),getOverallWorst(convertToArrayNested(storeValueList))
+                );
 
     }
 
