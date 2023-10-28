@@ -8,11 +8,19 @@ import java.util.Scanner;
 public class StudentGrade {
 
     public static int student(int number){
-        return number;
+        int convert;
+        if (number < 0){
+            convert = number * -1;
+        }
+        else {
+            convert = number;
+        }
+
+        return convert;
     }
 
     public static int subject(int number){
-        return number;
+        return student(number);
     }
 
     public static ArrayList<ArrayList<Integer>> storeValueList = new ArrayList<ArrayList<Integer>>();
@@ -56,29 +64,47 @@ public class StudentGrade {
     return conversion;
     }
 
+//    public static ArrayList<Integer> totalList = new ArrayList<>();
+//
+//    public static int[] total(int[][] value){
+//        for (int[] count : value){
+//            int sum = 0;
+//            for (int index : count){
+//                sum += index;
+//
+//            }
+//            totalList.add(sum);
+//        }
+//
+//        return convertToArray(totalList);
+//    }
+
+
     public static ArrayList<Integer> totalList = new ArrayList<>();
 
-    public static ArrayList<Integer> total(int[][] value){
-        for (int[] count : value){
+    public static int[] total(int[][] value){
+        int[] add = new int[value.length];
+        for (int row = 0; row < value.length; row++){
             int sum = 0;
-            for (int index : count){
-                sum += index;
-
+            for (int column = 0; column < value[row].length;column++){
+                sum += value[row][column];
             }
             totalList.add(sum);
+            add[row] = sum;
         }
 
-        return totalList;
+        return add;
     }
 
 public static ArrayList<Double> averageList = new ArrayList<>();
 
-    public static ArrayList<Double> average(ArrayList<Integer> number,int integer){
-        for (Integer index : number){
-            double ave = (double) index / integer;
-            averageList.add(ave);
+    public static double[] average(int[] number,int integer){
+        for (int index : number){
+            double ave =  (double) index / integer;
+            double round = Math.round(ave * 100.0) / 100.0;
+            averageList.add(round);
         }
-        return averageList;
+        return convertToArrayDouble(averageList);
     }
 
     public static ArrayList<ArrayList<Integer>> getSubjectList = new ArrayList<ArrayList<Integer>>();
@@ -119,19 +145,6 @@ public static ArrayList<Double> averageSubjectList = new ArrayList<>();
         return averageSubjectList;
     }
 
-//    public static ArrayList<Integer> maximumScoreList = new ArrayList<>();
-//
-//    public static ArrayList<Integer> maximumScore(ArrayList<ArrayList<Integer>> number){
-//        for (int value = 0; value < number.get(0).size(); value++){
-//            int max = 0;
-//            for (ArrayList<Integer> integers : number) {
-//                if (max < integers.get(value)) {
-//                    max = integers.get(value);
-//                }
-//            }
-//            maximumScoreList.add(max);}
-//        return maximumScoreList;
-//    }
 
 
     public static ArrayList<Integer> maximumScoreList = new ArrayList<>();
@@ -176,7 +189,7 @@ public static ArrayList<Double> averageSubjectList = new ArrayList<>();
     }
 
     public static ArrayList<Integer> passesList = new ArrayList<>();
-    public static ArrayList<Integer> passes(ArrayList<ArrayList<Integer>> number){
+    public static int[] passes(ArrayList<ArrayList<Integer>> number){
         for (int index = 0; index < number.get(0).size(); index++){
             int pass = 0;
             for (ArrayList<Integer> temp : number){
@@ -186,11 +199,11 @@ public static ArrayList<Double> averageSubjectList = new ArrayList<>();
             }
             passesList.add(pass);
         }
-        return passesList;
+        return convertToArray(passesList);
     }
 
     public static ArrayList<Integer> failList = new ArrayList<>();
-    public static ArrayList<Integer> fail(ArrayList<ArrayList<Integer>> number){
+    public static int[] fail(ArrayList<ArrayList<Integer>> number){
         for (int temp = 0; temp < number.get(0).size();temp++){
             int fail = 0;
             for (ArrayList<Integer> value : number){
@@ -200,26 +213,109 @@ public static ArrayList<Double> averageSubjectList = new ArrayList<>();
             }
             failList.add(fail);
         }
-        return failList;
+        return convertToArray(failList);
+    }
+
+
+//    public static ArrayList<Integer> failList = new ArrayList<>();
+//    public static int[] fail(int[][] number){
+//        int[] failCount= new int[number.length];
+//        for (int temp = 0; temp < number.length;temp++){
+//            int fail = 0;
+//            for (int column = 0; column < number[temp].length; column++){
+//                if (number[temp][column] < 50){
+//                    ++fail;
+//                }
+//            }
+//            failList.add(fail);
+//            failCount[temp] = fail;
+//        }
+//        return failCount;
+//    }
+
+
+    public static int hardest = 0;
+    public static int getHardestSubject(ArrayList<Integer> subject){
+        int max = 0;
+        for (int index = 0; index < subject.size();index++){
+            if (max < subject.get(index)){
+                max = subject.get(index);
+            }
+        }
+        hardest = max;
+        return max;
+    }
+
+    public static int hardestIndex = 0;
+    public static int getHardestSubjectIndex(ArrayList<Integer> subject){
+        int max = 0;
+        int indexHardest = 0;
+        for (int index = 0; index < subject.size();index++){
+            if (max < subject.get(index)){
+                max = subject.get(index);
+                indexHardest = index + 1;
+            }
+            hardestIndex = indexHardest;
+        }
+        return indexHardest;
+    }
+
+
+    public static int[] convertToArray(ArrayList<Integer> number){
+        int[] value = new int[number.size()];
+
+        for (int index = 0; index < number.size(); index++){
+            value[index] = number.get(index);
+        }
+
+        return value;
     }
 
 
 
-    public static ArrayList<String> addPosition = new ArrayList<String>();
-    public static ArrayList<String> positionScore (ArrayList<Integer> number){
-        int[] new_value = new  int[number.size()];
+    public static double[] convertToArrayDouble(ArrayList<Double> number){
+        double[] value = new double[number.size()];
+
+        for (int index = 0; index < number.size(); index++){
+            value[index] = number.get(index);
+        }
+
+        return value;
+    }
+
+
+    public static int[][] convertToArrayNested(ArrayList<ArrayList<Integer>> number) {
+        int[][] value = new int[number.size()][];
+
+        for (int row = 0; row < number.size(); row++) {
+            ArrayList<Integer> innerList = number.get(row);
+            value[row] = new int[innerList.size()];
+
+            for (int outer = 0; outer < innerList.size(); outer++) {
+                value[row][outer] = innerList.get(outer);
+            }
+        }
+
+        return value;
+    }
+
+
+
+    public static ArrayList<Integer> addPosition = new ArrayList<Integer>();
+    public static int[] positionScore (int[] number){
+        int[] new_value = new  int[number.length];
 
         Arrays.fill(new_value,1);
-        for (int count = 0; count < number.size(); count++){
+        for (int count = 0; count < number.length; count++){
             for (Integer index : number){
-                if (number.get(count) < index){
+                if (number[count] < index){
                     new_value[count] += 1;
                 }
             }
-            addPosition.add(String.valueOf(new_value[count]));
+            addPosition.add((new_value[count]));
         }
 
-        return addPosition;
+        return new_value;
     }
 
     public static void saving() throws InterruptedException {

@@ -53,15 +53,15 @@ public class StudentGradeMain {
         saving();
 
         total(storeValue(convert, convert2));
-        average(totalList, convert2);
-        positionScore(totalList);
+        average(convertToArray(totalList), convert2);
+        positionScore(convertToArray(totalList));
         totalSubjectCal(storeValueList);
         averageSubject(totalSubject, convert);
         maximumScore(storeValueList);
         minimumScores(storeValueList);
         passes(storeValueList);
         fail(storeValueList);
-;
+
 
         for (int count = 0; count < storeValueList.size(); count++) {
             System.out.printf("%-16s", "Student " + (count + 1));
@@ -105,6 +105,11 @@ dashDisplay(105);
                             passesList.get(value), failList.get(value));
             }
         }
+
+
+        System.out.printf("""
+                The hardest subject is Subject %d with %d failures
+                """,getHardestSubjectIndex(failList),getHardestSubject(failList));
 
     }
 
