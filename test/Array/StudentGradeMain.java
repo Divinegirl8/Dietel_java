@@ -80,13 +80,13 @@ dashDisplay(105);
             if (maximumScoreList.get(value) > minimumScoreList.get(value)) {
                 System.out.printf("""
                                 SUBJECT %d
-                                Highest scoring student is: %s
-                                Lowest scoring student is: %s
+                                Highest scoring student is: Student %d scoring %s
+                                Lowest scoring student is: Student %d scoring %s
                                 Total Score is: %d
                                 Average Score is: %.2f
                                 Number of passes: %d
                                 Number of failures: %d%n
-                                """, value + 1, maximumScoreList.get(value), minimumScoreList.get(value),
+                                """, value + 1, indexList.get(value),maximumScoreList.get(value),indexMin.get(value),minimumScoreList.get(value),
                         totalSubject.get(value), averageSubjectList.get(value),
                         passesList.get(value), failList.get(value));
             }

@@ -119,31 +119,59 @@ public static ArrayList<Double> averageSubjectList = new ArrayList<>();
         return averageSubjectList;
     }
 
+//    public static ArrayList<Integer> maximumScoreList = new ArrayList<>();
+//
+//    public static ArrayList<Integer> maximumScore(ArrayList<ArrayList<Integer>> number){
+//        for (int value = 0; value < number.get(0).size(); value++){
+//            int max = 0;
+//            for (ArrayList<Integer> integers : number) {
+//                if (max < integers.get(value)) {
+//                    max = integers.get(value);
+//                }
+//            }
+//            maximumScoreList.add(max);}
+//        return maximumScoreList;
+//    }
+
+
     public static ArrayList<Integer> maximumScoreList = new ArrayList<>();
+    public static ArrayList<Integer> indexList = new ArrayList<>();
 
     public static ArrayList<Integer> maximumScore(ArrayList<ArrayList<Integer>> number){
         for (int value = 0; value < number.get(0).size(); value++){
             int max = 0;
-            for (ArrayList<Integer> integers : number) {
-                if (max < integers.get(value)) {
-                    max = integers.get(value);
+            int index = 0;
+            for (int row = 0; row < number.size(); row++) {
+                if (max < number.get(row).get(value)) {
+                    max = number.get(row).get(value);
+                    index = row+1;
                 }
             }
-            maximumScoreList.add(max);}
+            maximumScoreList.add(max);
+            indexList.add(index);
+
+        }
         return maximumScoreList;
     }
 
+
+
     public static ArrayList<Integer> minimumScoreList = new ArrayList<>();
+    public static ArrayList<Integer> indexMin = new ArrayList<>();
 
     public static ArrayList<Integer> minimumScores(ArrayList<ArrayList<Integer>> number) {
         for (int index = 0; index < number.get(0).size(); index++) {
             int min = Integer.MAX_VALUE;
-            for (ArrayList<Integer> integer : number) {
-                if (min > integer.get(index)) {
-                    min = integer.get(index);
+            int indexValue = 0;
+            for (int row = 0; row < number.size(); row++) {
+                if (min > number.get(row).get(index)) {
+                    min = number.get(row).get(index);
+                    indexValue = row+1;
                 }
             }
-            minimumScoreList.add(min);}
+            minimumScoreList.add(min);
+            indexMin.add(indexValue);
+        }
         return minimumScoreList;
     }
 
