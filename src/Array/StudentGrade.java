@@ -145,6 +145,22 @@ public static ArrayList<Double> averageSubjectList = new ArrayList<>();
         return averageSubjectList;
     }
 
+    public static ArrayList<Integer> addPosition = new ArrayList<Integer>();
+    public static int[] positionScore (int[] number){
+        int[] new_value = new  int[number.length];
+
+        Arrays.fill(new_value,1);
+        for (int count = 0; count < number.length; count++){
+            for (Integer index : number){
+                if (number[count] < index){
+                    new_value[count] += 1;
+                }
+            }
+            addPosition.add((new_value[count]));
+        }
+
+        return new_value;
+    }
 
 
     public static ArrayList<Integer> maximumScoreList = new ArrayList<>();
@@ -313,6 +329,25 @@ public static ArrayList<Double> averageSubjectList = new ArrayList<>();
         return bestIndex;
     }
 
+
+
+    public static int getOverallBestStudentIndex(int[][] student){
+        int max = 0;
+        int bestStudentIndex = 0;
+        for (int row  = 0; row < student[0].length; row++){
+            for (int column = 0; column < student.length; column++){
+                if (max < student[column][row]){
+                    max = student[column][row];
+                    bestStudentIndex = column + 1;
+                }
+            }
+
+        }
+        return bestStudentIndex;
+    }
+
+
+
     public static int overallWorst = 0;
     public static int getOverallWorst(int[][] student){
         int min = Integer.MAX_VALUE;
@@ -342,6 +377,92 @@ public static ArrayList<Double> averageSubjectList = new ArrayList<>();
         }
         overallWorstIndex = min;
         return worstIndex;
+    }
+
+
+
+    public static int getOverallWorstStudentIndex(int[][] student){
+        int min = Integer.MAX_VALUE;
+        int worstStudentIndex = 0;
+        for (int row  = 0; row < student[0].length; row++){
+            for (int column = 0; column < student.length; column++){
+                if (min > student[column][row]){
+                    min = student[column][row];
+                    worstStudentIndex = column + 1;
+                }
+            }
+
+        }
+        return worstStudentIndex;
+    }
+
+
+    public static int bestStudentValue = 0;
+    public static int bestStudent(int[] totalValue){
+        int maxStudent = 0;
+        for (int number : totalValue){
+            if(maxStudent < number){ maxStudent = number;
+
+            }
+        }
+        bestStudentValue = maxStudent;
+        return maxStudent;
+    }
+
+
+
+    public static int bestStudentValueIndex = 0;
+    public static int bestStudentIndex(int[] totalValue){
+        int maxStudent = 0;
+        int bestStudentIndexValue = 0;
+        for (int index = 0; index < totalValue.length; index++){
+            if(maxStudent < totalValue[index]){ maxStudent = totalValue[index];
+                bestStudentIndexValue = index + 1;
+            }
+        }
+        bestStudentValueIndex = maxStudent;
+        return bestStudentIndexValue;
+    }
+
+
+    public static int worstStudentValue = 0;
+    public static int worstStudent(int[] totalValue){
+        int minStudent = Integer.MAX_VALUE;
+        for (int number : totalValue){
+            if(minStudent > number) minStudent = number;
+        }
+        worstStudentValue = minStudent;
+        return minStudent;
+    }
+
+
+    public static int worstStudentValueIndex = 0;
+    public static int worstStudentIndex(int[] totalValue){
+        int minStudent = Integer.MAX_VALUE;
+        int worstStudentIndexValue = 0;
+        for (int index = 0; index < totalValue.length; index++){
+            if(minStudent > totalValue[index]) {minStudent = totalValue[index];
+            worstStudentIndexValue = index+1;
+            }
+        }
+        worstStudentValueIndex = minStudent;
+        return worstStudentIndexValue;
+    }
+
+    public static int overallTotal(int[] total){
+        int sum = 0;
+
+        for (int number : total){
+            sum += number;
+        }
+
+        return sum;
+    }
+
+
+    public static double averageOverAllTotal(int[] total, int student){
+        double result = (double) Math.round(((double) overallTotal(total) / student) * 10) / 10;
+        return result;
     }
 
 
@@ -386,22 +507,7 @@ public static ArrayList<Double> averageSubjectList = new ArrayList<>();
 
 
 
-    public static ArrayList<Integer> addPosition = new ArrayList<Integer>();
-    public static int[] positionScore (int[] number){
-        int[] new_value = new  int[number.length];
 
-        Arrays.fill(new_value,1);
-        for (int count = 0; count < number.length; count++){
-            for (Integer index : number){
-                if (number[count] < index){
-                    new_value[count] += 1;
-                }
-            }
-            addPosition.add((new_value[count]));
-        }
-
-        return new_value;
-    }
 
     public static void saving() throws InterruptedException {
 
@@ -421,7 +527,7 @@ public static ArrayList<Double> averageSubjectList = new ArrayList<>();
     public static void dashDisplay(int number){
         for (int row = 0; row < 2; row++){
             for (int index = 0; index < number; index++){
-                System.out.print("-");
+                System.out.print("=");
             }
             System.out.println();
         }

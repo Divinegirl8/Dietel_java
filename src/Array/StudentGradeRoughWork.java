@@ -2,13 +2,12 @@ package Array;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Objects;
 import java.util.Scanner;
 import java.lang.*;
 
 import static java.util.Arrays.binarySearch;
 
-public class StudentGradeFunction {
+public class StudentGradeRoughWork {
     public static int students() {
         Scanner scan = new Scanner(System.in);
 

@@ -206,6 +206,14 @@ class StudentGradeFunctionTest {
 
     }
 
+    @Test
+
+    void testOverallBestStudentIndex(){
+        int[][] valueCheck = {{67,21,49},{98,62,56},{93,34,27},{78,83,66}};
+        assertEquals(2,getOverallBestStudentIndex(valueCheck));
+    }
+
+
 
     @Test
 
@@ -225,7 +233,65 @@ class StudentGradeFunctionTest {
         int output = getOverallWorstIndex(valueCheck);
         assertEquals(expected, output);
 
-
     }
 
+    @Test
+
+    void testOverallWorstStudentIndex(){
+        int[][] valueCheck = {{67,21,49},{98,62,56},{93,34,27},{78,83,66}};
+        assertEquals(1,getOverallWorstStudentIndex(valueCheck));
     }
+
+
+
+
+    @Test
+
+    void testBestStudent(){
+        int[][] valueCheck = {{67,21,49},{98,62,56},{93,34,27},{78,83,66}};
+        int[] result = total(valueCheck);
+        assertEquals(227,bestStudent(result));
+    }
+
+
+    @Test
+
+    void testBestStudentIndex(){
+        int[][] valueCheck = {{67,21,49},{98,62,56},{93,34,27},{78,83,66}};
+        int[] result = total(valueCheck);
+        assertEquals(4,bestStudentIndex(result));
+    }
+
+
+    @Test
+
+    void testWorstStudent(){
+        int[][] valueCheck = {{67,21,49},{98,62,56},{93,34,27},{78,83,66}};
+        int[] result = total(valueCheck);
+        assertEquals(137,worstStudent(result));
+    }
+
+    @Test
+
+    void testWorstStudentIndex(){
+        int[][] valueCheck = {{67,21,49},{98,62,56},{93,34,27},{78,83,66}};
+        int[] result = total(valueCheck);
+        assertEquals(1,worstStudentIndex(result));
+    }
+
+    @Test
+
+    void testOverallTotal(){
+        int[][] valueCheck = {{67,21,49},{98,62,56},{93,34,27},{78,83,66}};
+        int[] result = total(valueCheck);
+        assertEquals(734,overallTotal(result));}
+
+    @Test
+
+    void testOverallAverage(){
+        int[][] valueCheck = {{67,21,49},{98,62,56},{93,34,27},{78,83,66}};
+        int[] result = total(valueCheck);
+        assertEquals(183.5,averageOverAllTotal(result,student(valueCheck.length)));}
+
+
+}

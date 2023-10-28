@@ -64,6 +64,9 @@ public class StudentGradeMain {
 
 
 
+
+
+
         for (int count = 0; count < storeValueList.size(); count++) {
             System.out.printf("%-16s", "Student " + (count + 1));
             for (int count2 = 0; count2 < storeValueList.get(count).size(); count2++) {
@@ -111,13 +114,36 @@ dashDisplay(105);
         System.out.printf("""
                 The hardest subject is Subject %d with %d failure(s)
                 The easiest subject is Subject %d with %d pass(es)
-                The overall Highest score is scored by Student in subject %d scoring %d
-                The overall Lowest score is scored by Student in subject %d scoring %d
+                The overall Highest score is scored by Student %d in subject %d scoring %d
+                The overall Lowest score is scored by Student %d in subject %d scoring %d
+                ==========================================================
+                
+                
+                
+                CLASS SUMMARY
+                ===========================================================
+                Best Graduating Student is: Student %d scoring %d
+                ===========================================================
+                
+                !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                Worst Graduating Student is: Student %d scoring %d
+                !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                
+                
+                ===========================================================
+                Class total score is: %d
+                Class Average score is: %.1f
+               
+                
                 """,getHardestSubjectIndex(convertToArray(failList)),getHardestSubject(convertToArray(failList)),
                     getEasiestSubjectIndex(convertToArray(passesList)),getEasiestSubject(convertToArray(passesList)),
-                    getOverallBestIndex(convertToArrayNested(storeValueList)),getOverallBest(convertToArrayNested(storeValueList)),
-                   getOverallWorstIndex(convertToArrayNested(storeValueList)),getOverallWorst(convertToArrayNested(storeValueList))
+                    getOverallBestStudentIndex(convertToArrayNested(storeValueList)),getOverallBestIndex(convertToArrayNested(storeValueList)),getOverallBest(convertToArrayNested(storeValueList)),
+                  getOverallWorstStudentIndex(convertToArrayNested(storeValueList)), getOverallWorstIndex(convertToArrayNested(storeValueList)),getOverallWorst(convertToArrayNested(storeValueList)),
+                    bestStudentIndex(convertToArray(totalList)),bestStudent(convertToArray(totalList)),
+                worstStudentIndex(convertToArray(totalList)),  worstStudent(convertToArray(totalList)),
+                overallTotal(convertToArray(totalList)),averageOverAllTotal(convertToArray(totalList),convert)
                 );
+
 
     }
 
