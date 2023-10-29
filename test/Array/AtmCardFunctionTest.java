@@ -276,4 +276,38 @@ void testTotalTwo(){
         assertEquals(expected,value);
     }
 
+    @Test
+
+    void testDisplayInformation(){
+        String number =  "4388576018410707";
+        long[] result = pickOffValue(Long.parseLong(number));
+        String value = displayInformation(number,result);
+        String expected = """
+                *****************************************
+                **Credit Card Type: VisaCard
+                **Credit Card Number: 4388576018410707
+                **Credit Card Digit Length:  16
+                **Credit Card Validity Status: Valid
+                ********************************************
+                """;
+        assertEquals(expected,value);
+    }
+
+    @Test
+
+    void testDisplayInformationTwo(){
+        String number =  "3720690186237233";
+        long[] result = pickOffValue(Long.parseLong(number));
+        String value = displayInformation(number,result);
+        String expected = """
+                *****************************************
+                **Credit Card Type: AmericanExpressCard
+                **Credit Card Number: 3720690186237233
+                **Credit Card Digit Length:  16
+                **Credit Card Validity Status: Invalid
+                ********************************************
+                """;
+        assertEquals(expected,value);
+    }
+
 }

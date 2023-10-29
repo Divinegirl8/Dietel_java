@@ -223,6 +223,29 @@ public static boolean isDivisibleBy10(int number){
 
 
 
+    public static String displayInformation(String word,long[] result){
+
+        String value = String.valueOf(word.charAt(0));
+        String output;
+        if (value.equals("5")){
+            output = isMasterCard(Long.parseLong(word),addOddEvenPosition(evenPosition(result),oddPosition(result)));
+        }
+        else if (value.equals("4")){
+            output = isVisaCard(Long.parseLong(word),addOddEvenPosition(evenPosition(result),oddPosition(result)));
+        }
+        else if (value.equals("6")){
+            output = isDiscoverCard(Long.parseLong(word),addOddEvenPosition(evenPosition(result),oddPosition(result)));
+        }
+
+        else if(value.equals("3")){
+            output = isAmericanExpressCard(Long.parseLong(word),addOddEvenPosition(evenPosition(result),oddPosition(result)));
+        }
+        else {
+            output = notValid(Long.parseLong(word), addOddEvenPosition(evenPosition(result), oddPosition(result)));
+        }
+
+return output;
+    }
 
 
     public static void main(String[] args) {
@@ -235,25 +258,12 @@ public static boolean isDivisibleBy10(int number){
             System.out.println("Error!!!" + "\n" + "Enter a number: ");
             word = scan.nextLine();
         }
-        long num = 0;
-
-        if (word.matches("\\d+")){
-           num = Long.parseLong(word);
-        }
 
         long[] result = pickOffValue(Long.parseLong(word));
-        int expected = oddPosition(result);
-        int expected2 = evenPosition(result);
-        getFirstIndexPosition(word);
-        getSecondIndex(word);
-        addOddEvenPosition(expected,expected2);
 
+        System.out.println(displayInformation(word,result));
 
-
-        System.out.println(notValid(Long.parseLong(word),addOddEvenPosition(expected,expected2)));
-
-//        5388576018402626
-//        2720690186237233
+        }
 
     }
-}
+
