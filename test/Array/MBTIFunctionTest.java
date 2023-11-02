@@ -1,15 +1,20 @@
 package Array;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import org.junit.jupiter.api.Test;
 
-public class MBTIFunction {
-public static  String userName(String user){
-    return user;
+import static org.junit.jupiter.api.Assertions.*;
+import static Array.MBTIFunction.*;
+
+class MBTIFunctionTest {
+@Test
+    void testUserName(){
+    String name = "Wale";
+    assertEquals("Wale",userName(name));
 }
 
-public static String[] question(){
-    return new String[]{
+@Test
+    void testQuestion(){
+    String[] expected = {
             "expend energy, enjoy groups" ,"conserve energy, enjoy one-on-one",
             "Interpret literally"    ,"look for meaning and possibilities",
             "logical,thinking,questioning"    ,"empathetic, feeling, accommodating",
@@ -32,175 +37,189 @@ public static String[] question(){
             "control, govern"  ,              "latitude, freedom"
     };
 
+    assertArrayEquals(expected,question());
+}
+@Test
+    void testOptionA(){
+    String[] expected = {
+            "expend energy, enjoy groups" , "Interpret literally", "logical,thinking,questioning",
+            "organized,orderly", "more outgoing,think out loud", "practical, realistic, experiential",
+            "candid, straight, forward, frank", "plan, schedule", "seek many tasks, public activities, interaction with others",
+            "standard, usual, conventional" , "firm, tend to criticize, hold the line", "regulated, structured",
+            "external, communicative, express yourself" , "focus on here-and-now" , "tough-minded, just " ,
+            "preparation, plan ahead", "active, initiate", "facts, things, what is " , "matter of fact, issue-oriented " , "control, govern"};
+    assertArrayEquals(expected,optionA(question()));
+
 }
 
-public static  String[] optionA(String[] questions){
-    String[] newList = new String[questions.length/2];
-    for (int index = 0; index < questions.length; index+=2) {
-        newList[index/2] = questions[index];
-    }
-
-    return newList;
+@Test
+void testOptionB(){
+    String[] expected = {
+            "conserve energy, enjoy one-on-one", "look for meaning and possibilities", "empathetic, feeling, accommodating",
+            "flexible, adaptable", "more reserved, think to yourself", "imaginative, innovative, theoretical",
+            "tactful, kind, encouraging", "unplanned, spontaneous", "seek private, solitary activities with quiet to concentrate",
+            " different, novel, uniques", "gentle, tend to appreciate, conciliate ", "easy-going,live and let live",
+            "internal, reticent, keep to yourself", "look to the future, global perspective, big picture",
+            "tender-hearted, merciful", "go with the flow, adapt as you go", "reflective, deliberate ",
+            "ideas, dreams, what could be, philosophical", "sensitive, people-oriented, compassionate", "latitude, freedom"};
+    assertArrayEquals(expected,optionB(question()));
 }
 
-    public static  String[] optionB(String[] questions){
-        String[] newList = new String[questions.length/2];
-        for (int index = 0; index < questions.length; index+=2) {
-            newList[index/2] = questions[index + 1];
-        }
+@Test
+    void testDisplayQuestion(){
+    String expected = "A. expend energy, enjoy groups    B.conserve energy, enjoy one-on-one\n" +
+            "A. Interpret literally    B.look for meaning and possibilities\n" +
+            "A. logical,thinking,questioning    B.empathetic, feeling, accommodating\n" +
+            "A. organized,orderly    B.flexible, adaptable\n" +
+            "A. more outgoing,think out loud    B.more reserved, think to yourself\n" +
+            "A. practical, realistic, experiential    B.imaginative, innovative, theoretical\n" +
+            "A. candid, straight, forward, frank    B.tactful, kind, encouraging\n" +
+            "A. plan, schedule    B.unplanned, spontaneous\n" +
+            "A. seek many tasks, public activities, interaction with others    B.seek private, solitary activities with quiet to concentrate\n" +
+            "A. standard, usual, conventional    B. different, novel, uniques\n" +
+            "A. firm, tend to criticize, hold the line    B.gentle, tend to appreciate, conciliate \n" +
+            "A. regulated, structured    B.easy-going,live and let live\n" +
+            "A. external, communicative, express yourself    B.internal, reticent, keep to yourself\n" +
+            "A. focus on here-and-now    B.look to the future, global perspective, big picture\n" +
+            "A. tough-minded, just     B.tender-hearted, merciful\n" +
+            "A. preparation, plan ahead    B.go with the flow, adapt as you go\n" +
+            "A. active, initiate    B.reflective, deliberate \n" +
+            "A. facts, things, what is     B.ideas, dreams, what could be, philosophical\n" +
+            "A. matter of fact, issue-oriented     B.sensitive, people-oriented, compassionate\n" +
+            "A. control, govern    B.latitude, freedom\n"
+            ;
+    String result = displayQuestions(optionA(question()),optionB(question()));
+ assertEquals(expected,result);
+}
 
-        return newList;
-    }
 
-    public static String displayQuestions(String[] optionA,String[] optionB){
-          String value = "";
-
-        for (int index = 0; index < optionA.length; index++) {
-            value += "A. " + optionA[index] + "    B." + optionB[index] + "\n";
-        }
-return value;
-    }
+@Test
+    void testCount(){
+    String expected = """
+            Number of A selected: 1
+            Number of B selected: 4
+            
+            """;
+    assertEquals(expected,optionSelection(1,4));
 
 
-    public static StringBuilder response = new StringBuilder();
-    public static  ArrayList<String> valueInput = new ArrayList<>();
-    public static void userInput(String[] optionA,String[] optionB){
+}
 
+@Test
+    void testErrorMessage(){
+    String expected = """
+            Expected A or B as Response
+            I know this is an error, please retry again
+            """;
+    assertEquals(expected,showError());
+}
 
-        for (int index = 0; index < optionA.length; index++) {
-        System.out.print(displayQuestions(new String[]{optionA[index]}, new String[]{optionB[index]}));
+@Test
+ void testDisplayUserName(){
+    String expected = "Hello divine you selected: \n";
+    assertEquals(expected,displayName(userName("divine")));
+}
 
-       String value =  promptUser(new Scanner(System.in));
-       valueInput.add(value);
-
-            if (value.equals("A")){
-                response.append("A. ").append(optionA[index]).append("\n");
-            }
-            if (value.equals("B")){
-                response.append("B. ").append(optionB[index]).append("\n");
-
-            }
-        }
-    }
-
-public static String[] change(){
-    String changeToString = response.toString();
-    return changeToString.split("\n");
-
-    }
-
-    public static void userDisplay(String[] elements,String username, ArrayList<String> store){
-        System.out.print(displayName(username));
-        int increment = 5;
-        for (int index = 0; index < elements.length; index += increment) {
-           int countA = 0;
-          int countB = 0;
-
-            for (int i = index; i < index + increment; i++) {
-                System.out.println(elements[i]);
-                if (store.get(i).equals("A")) {
-                    ++countA;
-                }
-                if (store.get(i).equals("B")) {
-                    ++countB;
-                }
-            }
-            System.out.print(optionSelection(countA, countB) + "\n");
-
-        }
-
-    }
-
-    public static String displayName(String username){
-        return String.format("Hello %s you selected: %n" ,username);
+    @Test
+    void testDisplayUserName2(){
+        String expected = "Hello joy you selected: \n";
+        assertEquals(expected,displayName(userName("joy")));
     }
 
 
-    public static String optionSelection(int count, int count2){
-        return String.format("""
-                Number of A selected: %d
-                Number of B selected: %d%n
-                """,count,count2);
+    @Test
+    void testExtroverted(){
+        String expected = "E";
+        String[] value = {"A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A"};
+        assertEquals(expected,extrovertedIntroverted(value));
     }
 
-
-    public static String showError(){
-        return """
-               Expected A or B as Response
-               I know this is an error, please retry again
-                """;
-    }
-
-    private static String promptUser(Scanner scan){
-       String ans = scan.nextLine().trim().toUpperCase();
-        while ((ans.matches("\\d+") || !(ans.equals("A") || ans.equals("B")))){
-         ans = wrongAnswer(ans,scan);}
-        return ans;
-    }
-
-
-    private static String wrongAnswer(String ans, Scanner scan){
-        while ((ans.matches("\\d+") || !(ans.equals("A") || ans.equals("B")))) {
-            System.out.println(showError());
-            ans = scan.nextLine().toUpperCase();
-        }
-
-        return ans;
+    @Test
+    void testIntroverted(){
+        String expected = "I";
+        String[] value = {"B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B"};
+        assertEquals(expected,extrovertedIntroverted(value));
 
     }
 
+    @Test
 
-    public static String extrovertedIntroverted(String[] store){
-        String  result  = " ";
-
-        for (int check = 0 ; check < store.length; check +=4){
-            result = (store[check].equals("A") ? "E": "I");
-
-        }
-        return result;
-    }
-
-    public static String sensingIntuitive(String[] store){
-        String  result  = " ";
-
-        for (int check = 0 ; check < store.length; check +=4){
-            result = (store[check + 1].equals("A") ? "S": "N");
-
-        }
-        return result;
+    void testThinking(){
+        String expected = "T";
+        String[] value = {"A","B","A","B","A","B","A","B","A","B","A","B","A","B","A","B","A","B","A","B"};
+        assertEquals(expected,thinkingFeeling(value));
     }
 
 
-    public static String thinkingFeeling(String[] store){
-        String  result  = " ";
-
-        for (int check = 0 ; check < store.length; check +=4){
-            result = (store[check + 2].equals("A") ? "T": "F");
-
-        }
-        return result;
+    @Test
+    void testFeeling(){
+        String expected = "F";
+        String[] value = {"A","A","A","A","A","A","A","A","A","A","B","B","B","B","B","B","B","B","B","B"};
+        assertEquals(expected,thinkingFeeling(value));
     }
 
-    public static String judgingPerceptive(String[] store){
-        String  result  = " ";
-
-        for (int check = 0 ; check < store.length; check +=4){
-            result = (store[check + 3].equals("A") ? "J": "P");
-
-        }
-        return result;
+    @Test
+    void testSensing(){
+        String expected = "S";
+        String[] value = {"A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A"};
+        assertEquals(expected,sensingIntuitive(value));
     }
 
-    public static String personalityType(String[] store){
-        String  personalityType;
 
-        personalityType = extrovertedIntroverted(store) + sensingIntuitive(store) + thinkingFeeling(store) + judgingPerceptive(store);
-
-        return personalityType;
+    @Test
+    void testIntuitive(){
+        String expected = "N";
+        String[] value = {"A","B","A","B","A","B","A","B","A","B","A","B","A","B","A","B","A","B","A","B"};
+        assertEquals(expected,sensingIntuitive(value));
     }
 
-    public static String infpTrait(){
-        return  """
+    @Test
+    void testJudging(){
+        String expected = "J";
+        String[] value = {"A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A"};
+        assertEquals(expected,judgingPerceptive(value));
+    }
+
+    @Test
+    void testPerceptive(){
+        String expected = "P";
+        String[] value = {"B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B"};
+        assertEquals(expected,judgingPerceptive(value));
+    }
+
+
+
+    @Test
+    void testDisplayPersonalityType(){
+    String expected = "ESTJ";
+    String[] value = {"A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A","A"};
+    assertEquals(expected,personalityType(value));
+}
+    @Test
+    void testDisplayPersonalityType2(){
+        String expected = "INFP";
+        String[] value = {"B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B","B"};
+        assertEquals(expected,personalityType(value));
+
+    }
+
+    @Test
+    void testDisplayPersonalityType3(){
+        String expected = "ENTP";
+        String[] value = {"A","B","A","B","A","B","A","B","A","B","A","B","A","B","A","B","A","B","A","B"};
+        assertEquals(expected,personalityType(value));
+    }
+
+    @Test
+    void testDisplayPersonalityType4(){
+        String expected = "INFP";
+        String[] value = {"A","A","A","A","A","A","A","A","A","A","B","B","B","B","B","B","B","B","B","B"};
+        assertEquals(expected,personalityType(value));
+    }
+
+    @Test
+    void testInfpTrait(){
+    String expected =  """
                 INFP
                       Healer
                       The Thoughtful Idealist (MBTI)
@@ -229,11 +248,15 @@ public static String[] change(){
                    and concepts rather than facts and details (intuitive), make decisions based
                    on feelings and values (Feeling), and prefer to be spontaneous and flexible
                    rather than planned and organized (Perceiving).
-                """;
+                   """;
+
+    assertEquals(expected,infpTrait());
     }
 
-    public static String infjTrait(){
-        return """
+    @Test
+
+    void testInfjTrait(){
+    String expected = """
                     INFJ
                            The Advocate (16Personalities)
                     
@@ -257,10 +280,13 @@ public static String[] change(){
                          and a quiet, principled version of humanism guide them in all things.
                     
                     """;
+    assertEquals(expected,infjTrait());
     }
 
-    public static String intjTrait(){
-        return """
+    @Test
+
+    void testIntjTrait(){
+    String expected = """
                     INTJ
                            The Architect (16Personalities)
                            
@@ -284,11 +310,13 @@ public static String[] change(){
                             These thoughtful tacticians love perfecting the details of life, applying creativity and rationality to everything they do.
                             Their inner world is often a private, complex one.
                     """;
-
+    assertEquals(expected,intjTrait());
     }
 
-    public static String intpTrait(){
-        return """
+    @Test
+
+    void testIntpTrait(){
+    String expected = """
                      INTP
                            The Logician (16Personalities)
                            
@@ -308,10 +336,13 @@ public static String[] change(){
                          These flexible thinkers enjoy taking an unconventional approach to many aspects of life.
                          They often seek out unlikely paths, mixing willingness to experiment with personal creativity.
                     """;
+    assertEquals(expected,intpTrait());
     }
 
-    public static String entjTrait(){
-        return """
+    @Test
+
+    void testEntjTrait(){
+    String expected = """
                     ENTJ
                            The Commander (16Personalisties)
                     
@@ -335,10 +366,13 @@ public static String[] change(){
                          They are decisive people who love momentum and accomplishment. They gather information to construct their creative visions
                          but rarely hesitate for long before acting on them.
                     """;
+    assertEquals(expected,entjTrait());
     }
 
-    public static String entpTrait(){
-        return """
+    @Test
+
+    void testEntpTrait(){
+    String expected =  """
                     ENTP
                          The Debater (16Personalisties)
                                           
@@ -360,10 +394,12 @@ public static String[] change(){
                          They tend to be bold and creative, deconstructing and rebuilding ideas with great mental agility.
                          They pursue their goals vigorously despite any resistance they might encounter.
                   """;
+    assertEquals(expected,entpTrait());
     }
 
-    public static String enfjTrait(){
-        return """
+    @Test
+    void testEnfjTest(){
+    String expected = """
                     ENFJ
                          The Protagonists (16Personalisties)
                                           
@@ -382,11 +418,13 @@ public static String[] change(){
                          These warm, forthright types love helping others, and they tend to have strong ideas and values.
                          They back their perspective with the creative energy to achieve their goals.
                     """;
+    assertEquals(expected,enfjTrait());
     }
 
+    @Test
 
-    public static String enfpTrait(){
-        return """
+    void testEnfpTest(){
+    String expected = """
                     ENFP
                          The Protagonists (16Personalisties)
                                           
@@ -410,10 +448,13 @@ public static String[] change(){
                         Their vibrant energy can flow in many directions.
                     
                     """;
+    assertEquals(expected,enfpTrait());
     }
 
-    public static String istjTrait(){
-        return """
+    @Test
+
+    void testIstjTrait(){
+    String expected = """
                     ISTJ
                          The Logistician (16Personalisties)
                                           
@@ -435,10 +476,13 @@ public static String[] change(){
                          These people tend to be reserved yet willful, with a rational outlook on life. They compose their actions carefully and
                          carry them outwith methodical purpose.
                     """;
+    assertEquals(expected,istjTrait());
     }
 
-    public static String isfjTrait(){
-        return """
+    @Test
+
+    void testIsfjTrait(){
+    String expected = """
                     ISFJ
                          The Defender (16Personalisties)
                                           
@@ -461,10 +505,12 @@ public static String[] change(){
                     
  
                     """;
+    assertEquals(expected,isfjTrait());
     }
 
-    public static String estjTrait(){
-        return """
+    @Test
+    void testEstjTrait(){
+    String expected = """
                     ESTJ
                          The Executive (16Personalisties)
                                           
@@ -489,10 +535,12 @@ public static String[] change(){
                     
                     
                     """;
+    assertEquals(expected,estjTrait());
     }
 
-    public static String esfjTrait(){
-        return """
+    @Test
+    void testEsfjTrait(){
+    String expected = """
                     ESFJ
                          The Consul (16Personalisties)
                                           
@@ -514,11 +562,13 @@ public static String[] change(){
                         They are attentive and people-focused, and they enjoy taking part in their social community. Their achievements are guided by decisive values, 
                         and they willingly offer guidance to others.
                         """;
+    assertEquals(expected,esfjTrait());
     }
 
+    @Test
 
-    public static String istpTrait(){
-        return """
+    void testIstpTrait(){
+    String expected = """
                     ISTP
                          The Virtuoso (16Personalisties)
                                         
@@ -541,11 +591,13 @@ public static String[] change(){
                         They tend to have an individualistic mindset, pursuing goals without needing much external connection. They engage in life with inquisitiveness
                         and personal skill, varying their approach as needed.
                     """;
+    assertEquals(expected,istpTrait());
     }
 
+    @Test
 
-    public static String isfpTrait(){
-        return """
+    void testIsfpTrait(){
+    String expected = """
                     ISFP
                          The Adventurer (16Personalisties)
                          
@@ -568,11 +620,13 @@ public static String[] change(){
                         They tend to have open minds, approaching life, new experiences, and people with grounded warmth. Their ability to stay in
                         the moment helps them uncover exciting potentials.
                          """;
+    assertEquals(expected,isfpTrait());
     }
 
+    @Test
 
-    public static String estpTrait(){
-        return """
+    void testEstpTrait(){
+    String expected = """
                     ESTP
                          The Entrepreneur (16Personalisties)
                          
@@ -592,10 +646,13 @@ public static String[] change(){
                         An Entrepreneur (ESTP) is someone with the Extraverted, Observant, Thinking, and Prospecting personality traits.
                         They tend to be energetic and action-oriented, deftly navigating whatever is in front of them. They love uncovering life’s opportunities,
                         whether socializing with others or in more personal pursuits.""";
+    assertEquals(expected,estpTrait());
     }
 
-    public static String esfpTrait(){
-        return """
+    @Test
+
+    void testEsfpTrait(){
+    String expected = """
                     ESFP
                          The Entertainer (16Personalisties)
                          
@@ -616,54 +673,91 @@ public static String[] change(){
                         These people love vibrant experiences, engaging in life eagerly and taking pleasure in discovering the unknown. They can be very social,
                         often encouraging others into shared activities.
                         """;
+    assertEquals(expected,esfpTrait());
     }
 
+    @Test
 
+    void testDisplayPersonalityInformation(){
+    String expected = """
+                    ISFP
+                         The Adventurer (16Personalisties)
+                         
+                    The ISFP Personality Type
+                        Adventurers are true artists – although not necessarily in the conventional sense. For this personality type, life itself is a canvas
+                        for self-expression. From what they wear to how they spend their free time, Adventurers act in ways that vividly reflect who they are as unique individuals.
+                        And every Adventurer is certainly unique. Driven by curiosity and eager to try new things, people with this personality often have a fascinating
+                        array of passions and interests. With their exploratory spirits and their ability to find joy in everyday life, Adventurers can be among the
+                        most interesting people you’ll ever meet. The only irony? Unassuming and humble, Adventurers tend to see themselves as “just doing their own thing,”
+                        so they may not even realize how remarkable they really are.
+                        
+                        Adventurers embrace a flexible, adaptable approach to life. Some personality types thrive on strict schedules and routines – but not Adventurers.
+                        Adventurers take each day as it comes, doing what feels right to them in the moment. And they make sure to leave plenty of room in their lives for the
+                        unexpected – with the result that many of their most cherished memories are of spontaneous, spur-of-the-moment outings and adventures,
+                        whether by themselves or with their loved ones.
+                        
+                        Who is An Adventurer (ISFP)?
+                        
+                        An Adventurer (ISFP) is a person with the Introverted, Observant, Feeling, and Prospecting personality traits.
+                        They tend to have open minds, approaching life, new experiences, and people with grounded warmth. Their ability to stay in
+                        the moment helps them uncover exciting potentials.
+                         """;
 
-    public static String displayPersonalityInformation(String personalityType){
-        String result = "";
-        if(personalityType.equals("INFP")){result = infpTrait();}
-        if(personalityType.equals("INFJ")){result = infjTrait();}
-        if(personalityType.equals("INTJ")){result = intjTrait();}
-        if(personalityType.equals("INTP")){result = intpTrait();}
-        if(personalityType.equals("ENTJ")){result = entjTrait();}
-        if(personalityType.equals("ENTP")){result = entpTrait();}
-        if(personalityType.equals("ENFJ")){result = enfjTrait();}
-        if(personalityType.equals("ENFP")){result = enfpTrait();}
-        if(personalityType.equals("ISTJ")){result = istjTrait();}
-        if(personalityType.equals("ISFJ")){result = isfjTrait();}
-        if(personalityType.equals("ESTJ")){result = estjTrait();}
-        if(personalityType.equals("ESFJ")){result = esfjTrait();}
-        if(personalityType.equals("ISTP")){result = istpTrait();}
-        if(personalityType.equals("ISFP")){result = isfpTrait();}
-        if(personalityType.equals("ESTP")){result = estpTrait();}
-        if(personalityType.equals("ESFP")){result = esfpTrait();}
-
-
-        return result;
-    }
-
-    public static String[] convertToArray(ArrayList<String> value){
-        String[] list = new String[value.size()];
-        for (int index = 0; index < value.size(); index++) {
-            list[index] = value.get(index);
-        }
-        return list;
-    }
-
-
-
-    public static void main(String[] args) {
-    Scanner scanner = new Scanner(System.in);
-        System.out.println("What is your name: ");
-        String value = scanner.nextLine();
-        System.out.println("Answer the following questions with (A or B)");
-        userInput(optionA(question()), optionB(question()));
-        userDisplay(change(),userName(value),valueInput);
-        System.out.println(displayPersonalityInformation(personalityType(convertToArray(valueInput))));
-
-
-    }
+assertEquals(expected,displayPersonalityInformation("ISFP"));
 
 }
 
+@Test
+    void testDisplayPersonalityInformation2(){
+    String expected = """
+                    ENFJ
+                         The Protagonists (16Personalisties)
+                                          
+                    The ENFJ Personality Type
+                         Protagonists (ENFJs) feel called to serve a greater purpose in life. Thoughtful and idealistic,
+                         these personality types strive to have a positive impact on other people and the world around them.
+                         They rarely shy away from an opportunity to do the right thing, even when doing so is far from easy.
+                         
+                         Protagonists are born leaders, which explains why these personalities can be found among many notable politicians, coaches, and teachers.
+                         Their passion and charisma allow them to inspire others not just in their careers but in every arena of their lives, including their relationships.
+                         Few things bring Protagonists a deeper sense of joy and fulfillment than guiding friends and loved ones to grow into their best selves.
+                         
+                         Who is A Protagonist (ENFJ)?
+                         
+                         A Protagonist (ENFJ) is a person with the Extraverted, Intuitive, Feeling, and Judging personality traits.
+                         These warm, forthright types love helping others, and they tend to have strong ideas and values.
+                         They back their perspective with the creative energy to achieve their goals.
+                    """;
+    assertEquals(expected,displayPersonalityInformation("ENFJ"));
+
+}
+
+@Test
+    void testDisplayPersonalityInformation3(){
+    String expected = """
+                    ISTP
+                         The Virtuoso (16Personalisties)
+                                        
+                    The ISTP Personality Type
+                        Virtuosos love to explore with their hands and their eyes, touching and examining the world around them with cool rationalism and spirited curiosity.
+                        People with this personality type are natural Makers, moving from project to project, building the useful and the superfluous for the fun of it,
+                        and learning from their environment as they go. Often mechanics and engineers, Virtuosos find no greater joy than in getting their hands dirty
+                        pulling things apart and putting them back together, just a little bit better than they were before.
+                                        
+                        Virtuosos explore ideas through creating, troubleshooting, trial and error and first-hand experience. They enjoy having other people take an
+                        interest in their projects and sometimes don’t even mind them getting into their space. Of course, that’s on the condition that those people don’t
+                        interfere with Virtuosos’ principles and freedom, and they’ll need to be open to Virtuosos returning the interest in kind. Virtuosos enjoy lending
+                        a hand and sharing their experience, especially with the people they care about, and it’s a shame they’re so uncommon, making up only about five
+                        percent of the population. Virtuoso women are especially rare, and the typical gender roles that society tends to expect can be a poor fit
+                        - they’ll often be seen as tomboys from a young age.
+                        
+                        Who is A Virtuoso (ISTP)?
+                        
+                        A Virtuoso (ISTP) is someone with the Introverted, Observant, Thinking, and Prospecting personality traits.
+                        They tend to have an individualistic mindset, pursuing goals without needing much external connection. They engage in life with inquisitiveness
+                        and personal skill, varying their approach as needed.
+                    """;
+    assertEquals(expected,displayPersonalityInformation("ISTP"));
+}
+
+}

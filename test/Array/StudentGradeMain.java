@@ -110,27 +110,28 @@ dashDisplay(105);
             }
         }
 
-
+         String equalsSign = "=".repeat(55);
+        String exclaimSign = "!".repeat(55);
         System.out.printf("""
                 The hardest subject is Subject %d with %d failure(s)
                 The easiest subject is Subject %d with %d pass(es)
                 The overall Highest score is scored by Student %d in subject %d scoring %d
                 The overall Lowest score is scored by Student %d in subject %d scoring %d
-                ==========================================================
+                %s
                 
                 
                 
                 CLASS SUMMARY
-                ===========================================================
+                %s
                 Best Graduating Student is: Student %d scoring %d
-                ===========================================================
+                %s
                 
-                !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                %s
                 Worst Graduating Student is: Student %d scoring %d
-                !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                %s
                 
                 
-                ===========================================================
+                %s
                 Class total score is: %d
                 Class Average score is: %.1f
                
@@ -139,8 +140,11 @@ dashDisplay(105);
                     getEasiestSubjectIndex(convertToArray(passesList)),getEasiestSubject(convertToArray(passesList)),
                     getOverallBestStudentIndex(convertToArrayNested(storeValueList)),getOverallBestIndex(convertToArrayNested(storeValueList)),getOverallBest(convertToArrayNested(storeValueList)),
                   getOverallWorstStudentIndex(convertToArrayNested(storeValueList)), getOverallWorstIndex(convertToArrayNested(storeValueList)),getOverallWorst(convertToArrayNested(storeValueList)),
-                    bestStudentIndex(convertToArray(totalList)),bestStudent(convertToArray(totalList)),
-                worstStudentIndex(convertToArray(totalList)),  worstStudent(convertToArray(totalList)),
+                equalsSign,equalsSign,
+                bestStudentIndex(convertToArray(totalList)),bestStudent(convertToArray(totalList)),
+                equalsSign,exclaimSign,
+                worstStudentIndex(convertToArray(totalList)),  worstStudent(convertToArray(totalList)),exclaimSign,
+                equalsSign,
                 overallTotal(convertToArray(totalList)),averageOverAllTotal(convertToArray(totalList),convert)
                 );
 

@@ -8,12 +8,10 @@ public class ListToDict {
     public static Map<String,Integer> twoList(String[] letters, int[] numbers){
         Map<String,Integer> twoValues = new HashMap<>();
 
+
         for (int index = 0; index < Math.min(letters.length,numbers.length); index++) {
             twoValues.put(letters[index],numbers[index]);
-
         }
-
-
         return twoValues;
     }
 
