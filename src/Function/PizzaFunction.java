@@ -162,7 +162,7 @@ public class PizzaFunction {
     }
 
 public static String displayInformation(String boxSize, int numberOfSlices, int numberOfBoxes, int slicesLeft, int cost) {
-    String result = "";
+    String result;
 
 
     if (boxSize.equalsIgnoreCase("Large")) {
@@ -224,5 +224,9 @@ public static String displayInformation(String boxSize, int numberOfSlices, int 
 
 //    public static void main(String[] args) {
 //        System.out.println(displayInformation("Small", getTotalSize(4, 2, 1), calculateSmallSize(21, 4), calculateSmallRemainingSlices(calculateSmallTotalSlice(calculateSmallSize(getTotalSize(numberOfSuperHungrySize(4), numberOfHungrySize(2), numberOfClassicSize(1)), 4)), getTotalSize(numberOfSuperHungrySize(4), numberOfHungrySize(2), numberOfClassicSize(1))), smallPriceCalculation(calculateSmallSize(getTotalSize(numberOfSuperHungrySize(4), numberOfHungrySize(2), numberOfClassicSize(1)), 4))));
+//    }
+
+//    public static void main(String[] args) {
+//        System.out.println(calculateLargestSize(10, 4));
 //    }
 }

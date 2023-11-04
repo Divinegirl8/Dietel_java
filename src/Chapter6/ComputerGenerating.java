@@ -1,8 +1,11 @@
 package Chapter6;
 
+
+
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Scanner;
+import javax.swing.*;
 
 public class ComputerGenerating {
     public static int generateNumber()  {
@@ -22,34 +25,33 @@ public class ComputerGenerating {
 
 
 
-            System.out.println("How much is " + number1 + " times " + number2 + "?");
-            String value = scanner.nextLine();
+        String value =  JOptionPane.showInputDialog("How much is " + number1 + " times " + number2 + "?");
 
 
         int convertNumber = getConvertNumber(value, scanner, number1, number2);
 
 
         if (convertNumber == (number1 * number2)) {
-                System.out.println("Very good");
-            }
+            JOptionPane.showMessageDialog(null,"Very good");
+        }
 
         displayInformation();
     }
 
     private static int getConvertNumber(String value, Scanner scanner, int number1, int number2) {
         while (!value.matches("\\d+")) {
-            System.out.println("Error!!!, input must contain numbers only \nEnter again");
-            value = scanner.nextLine();
+            value =  JOptionPane.showInputDialog(null,"Error!!!, input must contain numbers only \nEnter again");
+
         }
 
         int convertNumber = Integer.parseInt(value);
 
         while (convertNumber != (number1 * number2)) {
-            System.out.println("No please try again: ");
-            String input = scanner.nextLine();
+            String input = JOptionPane.showInputDialog(null,"No please try again: ");
+
             while (!input.matches("\\d+")) {
-                System.out.println("Error!!!, input must contain numbers only \nEnter again");
-                input = scanner.nextLine();
+                input = JOptionPane.showInputDialog(null,"Error!!!, input must contain numbers only \nEnter again");
+
             }
             if (input.matches("\\d+")) {
                 convertNumber = Integer.parseInt(input);
