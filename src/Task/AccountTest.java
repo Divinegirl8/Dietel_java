@@ -11,6 +11,8 @@ public class AccountTest {
         Account acct = new Account();
         Scanner scan = new Scanner(System.in);
 
+
+
         System.out.print("Deposit an amount: ");
         int amount = scan.nextInt();
         acct.deposit(amount);

@@ -94,8 +94,8 @@ public class ShopList {
 //            quantity multiply by price
         for (int index = 0; index < quantityList.size(); index++) {
 
-            double resultt = quantityList.get(index) * unitList.get(index);
-            multiplyNumber.add(resultt);
+            double result = quantityList.get(index) * unitList.get(index);
+            multiplyNumber.add(result);
         }
 
 

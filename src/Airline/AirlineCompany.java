@@ -5,9 +5,19 @@ import java.util.Scanner;
 
 public class AirlineCompany {
 
-    private static boolean[] assignSeat(boolean[] user, int score) {
+    private static boolean[] assignSeatFirstClass(boolean[] user, int score) {
         for (int index = 0; index < user.length/2; index++) {
             if (score == 1 && !user[index]) {
+                user[index] = true;
+                break;
+            }
+        }
+        return user;
+    }
+
+    private static boolean[] assignSeatEconomy(boolean[] user, int score) {
+        for (int index = user.length/2; index < user.length; index++) {
+            if (score == 2 && !user[index]) {
                 user[index] = true;
                 break;
             }
@@ -25,10 +35,17 @@ public class AirlineCompany {
         boolean[] seats = company.getSeats();
 
         for (int i = 0; i < 10; i++) {
-            System.out.println("Enter seat type (1 for regular, 2 for business)");
+            System.out.println("Enter seat type (1 for first class, 2 for economy)");
             int value = scanner.nextInt();
-            seats = assignSeat(seats, value);
-            System.out.println(Arrays.toString(seats));
+            if (value == 1){
+            seats = assignSeatFirstClass(seats, value);}
+
+            else if (value == 2) {
+               seats = assignSeatEconomy(seats,value);
+            }
+
+
         }
+        System.out.println(Arrays.toString(seats));
     }
 }
