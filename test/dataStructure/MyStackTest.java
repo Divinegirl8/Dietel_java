@@ -80,8 +80,9 @@ class MyStackTest {
         MyStack<Integer> myStack = new MyStack<>();
         myStack.push(8);
         myStack.push(2);
-        myStack.peek();
+        assertEquals(2,myStack.peek());
         assertEquals(2,myStack.size());
+
     }
     @Test void testMyStackArgsConstructor(){
         MyStack<String> myStack = new MyStack<>(10);

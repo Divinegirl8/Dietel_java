@@ -25,7 +25,7 @@ public class MyStack<T> {
     }
 
     public void push(T value){
-        if(isFull()) throw new StackOverflowError("Stack if full");
+        if(isFull()) throw new StackOverflowError("Stack is full");
         myStackContainer[size++] = value;
     }
 
@@ -43,5 +43,23 @@ public class MyStack<T> {
     public Object peek() {
         if (size <= 0) {throw new StackUnderFlowError("Stack is empty");}
         return myStackContainer[size - 1];
+    }
+
+    public T get(int value){
+        return (T) myStackContainer[value];
+    }
+
+    public static void main(String[] args) {
+        MyStack<String> myStack = new MyStack<>();
+
+        myStack.push("Divine");
+        myStack.push("Sam");
+
+
+        for (int index = 0; index < myStack.size(); index++) {
+            System.out.println(myStack.get(index));
+
+        }
+        System.out.println(myStack.peek());
     }
 }
