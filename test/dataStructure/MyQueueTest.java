@@ -1,4 +1,4 @@
-package arraylist;
+package dataStructure;
 
 import org.junit.jupiter.api.Test;
 

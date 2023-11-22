@@ -1,9 +1,7 @@
-package arraylist;
+package dataStructure;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
-import java.util.Scanner;
 
 public class MyArrayList<T> {
     private Object[] valueContainer = new Object[10];
@@ -117,7 +115,27 @@ public class MyArrayList<T> {
         return false;
     }
 
-    public static void main(String[] args) {
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+
+        MyArrayList<T> valueInTheParameter = (MyArrayList<T>) object;
+
+        if (valueContainer.length != valueInTheParameter.valueContainer.length) {
+            return false;
+        }
+
+        for (int index = 0; index < valueContainer.length; index++) {
+            if (!Objects.equals(valueContainer[index], valueInTheParameter.valueContainer[index])) {
+                return false;
+            }
+        }
+
+        return true;
+
+    }
+        public static void main(String[] args) {
 
         MyArrayList<String> myArrayList = new MyArrayList<>();
 
@@ -131,18 +149,28 @@ public class MyArrayList<T> {
 
 
 MyArrayList<String> myArrayList1 = new MyArrayList<>();
-myArrayList1.add("Lion1");
-myArrayList1.add("Lion2");
+        myArrayList1.add("goat5");
+        myArrayList1.add("goat4");
+        myArrayList1.add("goat3");
+        myArrayList1.add("goat5");
 
-myArrayList.addAll(myArrayList1);
+
+
+
+
 
         for (int i = 0; i < myArrayList.size(); i++) {
             System.out.println(myArrayList.get(i));
         }
+        System.out.println(myArrayList.equals(myArrayList1));
 
-        System.out.println(myArrayList.containsAll(myArrayList1));
+
 
         System.out.println(Arrays.toString(myArrayList.toArray()));
+
+
+
+
 
     }
 
