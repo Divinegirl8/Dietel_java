@@ -1,0 +1,34 @@
+package diaryApp;
+
+import java.time.LocalDateTime;
+
+public class Entry {
+    private int id;
+    private  String title;
+    private String body;
+    private LocalDateTime dateCreated;
+
+    public Entry(int id, String title, String body){
+        this.id = id;
+        this.title = title;
+        this.body = body;
+    }
+
+    public int getId(){
+        return id;
+    }
+
+
+    public void editEntry(String title, String body) {
+        this.title = title;
+        this.body = body;
+    }
+
+    public void setDateCreated(LocalDateTime time){
+        this.dateCreated = time;
+    }
+
+    public LocalDateTime getDateCreated() {
+        return dateCreated;
+    }
+}
