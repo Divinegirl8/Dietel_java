@@ -55,4 +55,15 @@ class DiariesTest {
         diaries.deleteDiary("joy","1234");
         assertEquals(1,diaries.getSizeOfDiaries());
 }
+
+    @Test void testThatMyDiariesCanThrowException(){
+        diaries.add("joy","1234");
+        diaries.add("philip","0000");
+
+        assertEquals(2,diaries.getSizeOfDiaries());
+
+
+       assertThrows(RuntimeException.class, () -> diaries.deleteDiary("odim","1234"));
+
+    }
 }

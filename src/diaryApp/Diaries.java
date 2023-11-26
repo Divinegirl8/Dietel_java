@@ -29,5 +29,6 @@ public void deleteDiary(String userName, String password){
             for (Diary diary : diaries){
                 if (diary.getUsername().equals(userName) && diary.getPassword().equals(password)) diaries.remove(diary);
             }
+            throw new DiaryNotFoundError("Diary does not exist");
         }
 }
