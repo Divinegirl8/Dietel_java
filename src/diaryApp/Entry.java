@@ -31,4 +31,8 @@ public class Entry {
     public LocalDateTime getDateCreated() {
         return dateCreated;
     }
+
+
+
+
 }

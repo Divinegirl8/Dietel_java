@@ -1,5 +1,6 @@
 package diaryApp;
 
+import diaryApp.exception.DiaryLockExceptions;
 import diaryApp.exception.EntryNotFoundError;
 import diaryApp.exception.InvalidPasswordError;
 
@@ -41,12 +42,14 @@ public Diary(String username, String password){
     }
 
     public void createEntry(String title, String body) {
-    if (isLocked) throw new RuntimeException("Cannot create entry because diary is locked");
+    if (isLocked) throw new DiaryLockExceptions("Cannot create entry because diary is locked");
     entrySize++;
     Entry entry = new Entry(generateEntryId(),title,body);
     entry.setDateCreated(LocalDateTime.now());
     entries.add(entry);
     }
+
+
 
     public int generateEntryId(){
     return Integer.parseInt( 19 + "" + entrySize);
@@ -62,7 +65,7 @@ public Diary(String username, String password){
 
     }
     public Entry findEntryId(int id){
-    if (isLocked) throw new RuntimeException("Cannot create entry because diary is locked");
+    if (isLocked) throw new DiaryLockExceptions("Cannot find entry because diary is locked");
 
     for (Entry entry : entries){
         if (entry.getId() == id) return entry;
@@ -71,7 +74,7 @@ public Diary(String username, String password){
     }
 
     public void updateEntry(int id, String title, String body) {
-    if (isLocked) throw new RuntimeException("Cannot create entry because diary is locked");
+    if (isLocked) throw new DiaryLockExceptions("Cannot update entry because diary is locked");
     Entry entry = findEntryId(id);
     entry.editEntry(title,body);
     entries.set(findIndexOf(id),entry);
