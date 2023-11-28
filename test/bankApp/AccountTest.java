@@ -1,7 +1,7 @@
 package bankApp;
 
 import bankApp.exceptions.InsufficientFundsError;
-import bankApp.exceptions.InvalidAmountException;
+import bankApp.exceptions.InvalidDepositAmountException;
 import bankApp.exceptions.InvalidPinException;
 import bankApp.exceptions.LowAmountError;
 import org.junit.jupiter.api.BeforeEach;
@@ -49,7 +49,7 @@ class AccountTest {
     }
 
     @Test void TestThatMyAccountWillThrownInvalidAmountExceptionIfAmountIsLessThanAndEqualsToZero(){
-        assertThrows(InvalidAmountException.class, () -> account.deposit(new BigDecimal(0)));
+        assertThrows(InvalidDepositAmountException.class, () -> account.deposit(new BigDecimal(0)));
     }
 
     @Test void testThatMyAccountCanWithdrawMoney(){

@@ -192,17 +192,6 @@ class DiaryTest {
 
     }
 
-    @Test void testThatDiaryCanFindTheIndexOfAnEntry(){
-        diary.unlockDiary("password");
-        assertFalse(diary.isLocked());
-        diary.createEntry("title","body");
-        diary.createEntry("title","body");
-        diary.createEntry("title","body");
-        assertEquals(2,diary.findIndexOf(193));
-        assertEquals(0,diary.findIndexOf(191));
-        assertEquals(1,diary.findIndexOf(192));
-
-    }
 
 
 

@@ -8,6 +8,8 @@ public class Entry {
     private String body;
     private LocalDateTime dateCreated;
 
+
+
     public Entry(int id, String title, String body){
         this.id = id;
         this.title = title;
@@ -19,20 +21,43 @@ public class Entry {
     }
 
 
-    public void editEntry(String title, String body) {
-        this.title = title;
+
+
+    public void setBody(String body){
         this.body = body;
     }
 
+
+
     public void setDateCreated(LocalDateTime time){
         this.dateCreated = time;
+    }
+
+    public String getBody() {
+        return body;
     }
 
     public LocalDateTime getDateCreated() {
         return dateCreated;
     }
 
+public String toString(){
+        return String.format("""
+                =============================
+                Entry Id: %d
+                Entry Title: %s
+                Date Created : %s
+                =============================
+                Entry Body: %s
+                =============================
+                """,id,title,dateCreated,body);
+}
 
+public void setTitle(String title){
+        this.title = title;
+}
 
-
+    public String getTitle() {
+        return title;
+    }
 }

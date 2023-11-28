@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Diaries {
-    private List<Diary> diaries = new ArrayList<>();
+    private final List<Diary> diaries = new ArrayList<>();
 
     public void add(String username, String password) {
         Diary diary = new Diary(username, password);

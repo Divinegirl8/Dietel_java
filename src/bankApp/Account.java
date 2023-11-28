@@ -2,7 +2,7 @@
 package bankApp;
 
 import bankApp.exceptions.InsufficientFundsError;
-import bankApp.exceptions.InvalidAmountException;
+import bankApp.exceptions.InvalidDepositAmountException;
 import bankApp.exceptions.InvalidPinException;
 import bankApp.exceptions.LowAmountError;
 
@@ -41,7 +41,7 @@ public class Account {
     }
 
     public  void validateAmount(BigDecimal amount){
-        if (amount.compareTo(BigDecimal.ZERO) <= 0) throw new InvalidAmountException("Amount must be greater than 0");
+        if (amount.compareTo(BigDecimal.ZERO) <= 0) throw new InvalidDepositAmountException("Error!!!, the amount you are trying to deposit must be greater than 0 \nTry again");
     }
 
     public void withdraw(BigDecimal amount, String pin){
@@ -54,11 +54,22 @@ public class Account {
 
     public void validateSufficientFund(BigDecimal amount){
         if (balance == null) balance = BigDecimal.ZERO;
-       if (this.balance.compareTo(amount)  < 0) throw new InsufficientFundsError("You cannot withdraw an amount less than 0");
+       if (this.balance.compareTo(amount)  < 0) throw new InsufficientFundsError("Error!!! your account balance is lower than the money you are trying to withdraw\nTry Again");
     }
 
     public void validateLowBalance(BigDecimal amount){
-        if (amount.compareTo(BigDecimal.ZERO) <= 0)  throw new LowAmountError("Balance is lower than the money you are trying to withdraw");
+        if (amount.compareTo(BigDecimal.ZERO) <= 0)  throw new LowAmountError("Error!!! The amount cannot be less than 0\nTry again");
+    }
+
+    public String toString(){
+        return String.format("""
+                ================================
+                Account name: %s
+                Account number: %s
+                Balance: %s
+                Account pin: Unavailable
+                ================================
+                """, name, number, balance);
     }
 }
 

@@ -5,6 +5,7 @@ import diaryApp.exception.EntryNotFoundError;
 import diaryApp.exception.InvalidPasswordError;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,13 +15,18 @@ public class Diary {
     private boolean isLocked = true;
     private List<Entry> entries;
 
+    private List<Diary> diaries;
+
     private int entrySize;
+
 
 
 public Diary(String username, String password){
     this.username = username;
     this.password = password;
     entries = new ArrayList<>();
+    diaries = new ArrayList<>();
+
 
 }
 
@@ -41,14 +47,23 @@ public Diary(String username, String password){
     isLocked = true;
     }
 
-    public void createEntry(String title, String body) {
+    public Entry createEntry(String title, String body) {
     if (isLocked) throw new DiaryLockExceptions("Cannot create entry because diary is locked");
     entrySize++;
     Entry entry = new Entry(generateEntryId(),title,body);
     entry.setDateCreated(LocalDateTime.now());
     entries.add(entry);
+
+    return entry;
     }
 
+    public void addDiary(Diary diary) {
+        diaries.add(diary);
+    }
+
+    public String generateTime() {
+        return  LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+    }
 
 
     public int generateEntryId(){
@@ -69,23 +84,20 @@ public Diary(String username, String password){
 
     for (Entry entry : entries){
         if (entry.getId() == id) return entry;
-    }
- throw new EntryNotFoundError("Entry id not found");
+    } throw new EntryNotFoundError("Entry id not found");
     }
 
     public void updateEntry(int id, String title, String body) {
     if (isLocked) throw new DiaryLockExceptions("Cannot update entry because diary is locked");
+
     Entry entry = findEntryId(id);
-    entry.editEntry(title,body);
-    entries.set(findIndexOf(id),entry);
+    String message = entry.getBody() + " " + body;
+    entry.setTitle(title);
+    entry.setBody(message);
+    
     }
 
-    public int findIndexOf(int id) {
-        for (int index = 0; index < entries.size(); index++) {
-            if (entries.get(index).getId() == id) return index;
-        }
-        throw new EntryNotFoundError("Entry id not found");
-    }
+
 
     public String getUsername(){
     return username;
@@ -94,4 +106,8 @@ public Diary(String username, String password){
     public String getPassword(){
     return password;
     }
+
+
+
+
 }
