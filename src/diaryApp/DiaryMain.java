@@ -1,5 +1,6 @@
 package diaryApp;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.*;
 
@@ -23,8 +24,29 @@ public class DiaryMain {
 
         return object;
     }
+//    private static void clearScreen() {
+//        try {
+//            final String os = System.getProperty("os.name").toLowerCase();
+//
+//            ProcessBuilder processBuilder;
+//            if (os.contains("linux")) {
+//                processBuilder = new ProcessBuilder("cmd", "/c", "cls");
+//            } else {
+//                System.out.print("\033[H\033[2J"); // ANSI escape codes to clear the screen
+//                System.out.flush();
+//                return;
+//            }
+//
+//            processBuilder.inheritIO().start().waitFor();
+//        } catch (final Exception e) {
+//            System.err.println("Error while clearing the screen: " + e.getMessage());
+//            // You can log the exception or take appropriate action based on your requirements.
+//        }
+//    }
+
 
     public static void mainMenu(){
+
         System.out.println("""
                 ============================
                          MY DIARY
@@ -120,6 +142,7 @@ public class DiaryMain {
                 entryOptions();
             } catch (Exception exception) {
                 System.out.println(exception.getMessage());
+                entryOptions();
             }
         } else {
             System.out.println("Entry not deleted.");
@@ -131,7 +154,13 @@ public class DiaryMain {
     private static void diaryUpdate() {
 
         System.out.println("Enter entry id: ");
-        int id = input(Integer.class);
+        String id = input(String.class);
+
+        while (!id.matches("\\d+")) {
+            System.out.println("id must consist of digits only\ntry again: ");
+            id = input(String.class);
+        }
+        int convert_id = Integer.parseInt(id);
 
         System.out.println("write a title: ");
         String title = input(String.class);
@@ -140,7 +169,7 @@ public class DiaryMain {
         String body = input(String.class);
 
          try {
-        myDiary.updateEntry(id,title,body);
+        myDiary.updateEntry(convert_id,title,body);
              System.out.println("Diary has been updated");
         entryOptions();}
          catch (Exception exception){
@@ -173,13 +202,15 @@ public class DiaryMain {
         System.out.println("Compose your message: ");
         String body = input(String.class);
 
+      try {
       Entry entry= myDiary.createEntry(title,body);
         System.out.printf("Entry created successfully\n Your entry id is %d%n",entry.getId());
         System.out.println();
-
-
-
-        entryOptions();
+        entryOptions();}
+      catch (Exception exception){
+          System.out.println(exception.getMessage());
+          addEntry();
+      }
     }
 
 
@@ -187,8 +218,20 @@ public class DiaryMain {
         System.out.println("Enter Username: ");
         String userName = input(String.class);
 
+
+
+        if (!userName.matches(".*[a-z].*\\d.*") || userName.length() < 5 || userName.matches("^[0-9].*")){
+            System.out.println("Username must consist of letters and digits,\nnumbers of characters must be grater than 4\nusername cannot start with a number\nusername should be all lower case");
+            createDiary();
+            }
+
         System.out.println("Enter Password: ");
         String password = input(String.class);
+
+        while (password.length() < 7){
+            System.out.println("Password is weak, the length of password should be greater than 6\nEnter again");
+            password = input(String.class);
+        }
 
         myDiary = new Diary(userName,password);
         System.out.println("Diary created successfully!!!");
@@ -197,8 +240,13 @@ public class DiaryMain {
 
 
 
+
     public static void main(String[] args) {
         mainMenu();
+
+
+
+
     }
 
 

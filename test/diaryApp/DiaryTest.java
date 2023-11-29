@@ -1,5 +1,6 @@
 package diaryApp;
 
+import diaryApp.exception.EmptyInputError;
 import diaryApp.exception.InvalidPasswordError;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -63,6 +64,16 @@ class DiaryTest {
         diary.createEntry("title","body");
         diary.createEntry("title","body");
         assertEquals(15,diary.getEntrySize());
+        diary.lockDiary();
+    }
+
+    @Test void testThatMyEntryCanThrowAnErrorIfEmpty(){
+        diary.unlockDiary("password");
+        assertFalse(diary.isLocked());
+
+        assertThrows(EmptyInputError.class,()->  diary.createEntry(" "," "));
+
+
     }
 
     @Test void testThatMyDiaryCanDeleteEntry(){

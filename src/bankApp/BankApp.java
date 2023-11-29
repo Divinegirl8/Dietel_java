@@ -132,13 +132,25 @@ public class BankApp {
         print("First Name: ");
         String firstName = input(String.class);
 
+        while (!firstName.matches("[a-zA-Z]+")){
+            System.out.println("Error!!! first name must consist of letters only with no space");
+            firstName = input(String.class);
+        }
+
         print("Last Name: ");
         String lastName = input(String.class);
+
+        while (!lastName.matches("[a-zA-Z]+")){
+            System.out.println("Error!!! last name must consist of letters only with no space");
+            lastName = input(String.class);
+        }
+
 
         print("Create Password");
         String password = input(String.class);
 
         Account account = myBank.createAccount(firstName,lastName,password);
+        System.out.println("Account created successfully");
         System.out.println(account);
         mainMenu();
     }

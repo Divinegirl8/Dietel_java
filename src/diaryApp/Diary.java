@@ -1,6 +1,7 @@
 package diaryApp;
 
 import diaryApp.exception.DiaryLockExceptions;
+import diaryApp.exception.EmptyInputError;
 import diaryApp.exception.EntryNotFoundError;
 import diaryApp.exception.InvalidPasswordError;
 
@@ -48,13 +49,22 @@ public Diary(String username, String password){
     }
 
     public Entry createEntry(String title, String body) {
-    if (isLocked) throw new DiaryLockExceptions("Cannot create entry because diary is locked");
+    diaryIsLockedError();
+    emptyInputError(title,body);
     entrySize++;
     Entry entry = new Entry(generateEntryId(),title,body);
     entry.setDateCreated(LocalDateTime.now());
     entries.add(entry);
 
     return entry;
+    }
+
+    public void emptyInputError(String title,String body){
+        if(title.trim().isEmpty() || body.trim().isEmpty()) throw new EmptyInputError("Input cannot be empty");
+    }
+
+    public void diaryIsLockedError(){
+        if (isLocked) throw new DiaryLockExceptions("Diary is locked");
     }
 
     public void addDiary(Diary diary) {
@@ -80,7 +90,7 @@ public Diary(String username, String password){
 
     }
     public Entry findEntryId(int id){
-    if (isLocked) throw new DiaryLockExceptions("Cannot find entry because diary is locked");
+    diaryIsLockedError();
 
     for (Entry entry : entries){
         if (entry.getId() == id) return entry;
@@ -88,7 +98,8 @@ public Diary(String username, String password){
     }
 
     public void updateEntry(int id, String title, String body) {
-    if (isLocked) throw new DiaryLockExceptions("Cannot update entry because diary is locked");
+    diaryIsLockedError();
+    emptyInputError(title,body);
 
     Entry entry = findEntryId(id);
     String message = entry.getBody() + " " + body;
