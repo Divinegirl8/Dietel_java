@@ -1,5 +1,7 @@
 package diaryApp;
 
+import diaryApp.exception.DiaryNotFoundError;
+import diaryApp.exception.UserNameExistError;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -43,9 +45,16 @@ class DiariesTest {
 
         assertEquals(3, diaries.getSizeOfDiaries());
 
-        assertThrows(RuntimeException.class, () ->diaries.findDiaryByUserName("Steph").getUsername());
-
+        assertThrows(DiaryNotFoundError.class, () ->diaries.findDiaryByUserName("Steph").getUsername());
     }
+
+    @Test void testThatMyDiariesCanThrowAnExceptionIfUserNameAlreadyExist() {
+        diaries.add("username", "password");
+
+        assertThrows(UserNameExistError.class, () -> diaries.add("username", "password2"));
+    }
+
+
 @Test void testThatMyDiariesCanDelete(){
         diaries.add("joy","1234");
         diaries.add("philip","0000");
@@ -63,7 +72,7 @@ class DiariesTest {
         assertEquals(2,diaries.getSizeOfDiaries());
 
 
-       assertThrows(RuntimeException.class, () -> diaries.deleteDiary("odim","1234"));
+       assertThrows(DiaryNotFoundError.class, () -> diaries.deleteDiary("odim","1234"));
 
     }
 }

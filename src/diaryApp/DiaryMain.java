@@ -1,11 +1,11 @@
 package diaryApp;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.*;
 
 public class DiaryMain {
     static Diary myDiary;
+
     private static <E> E input(Class<E> type) {
         Scanner scanner = new Scanner(System.in);
         E object = null;
@@ -68,10 +68,6 @@ public class DiaryMain {
     }
 
     private static void lockDiary() throws InterruptedException {
-        if (myDiary == null) {
-            System.out.println("Diary not created. Please create a diary first.");
-            mainMenu();
-        }
         try {
         myDiary.lockDiary();
             System.out.println("Diary locked");
@@ -234,6 +230,7 @@ public class DiaryMain {
             password = input(String.class);
         }
 
+
         myDiary = new Diary(userName,password);
         creating();
         System.out.println("Diary created successfully!!!");
@@ -254,6 +251,7 @@ public class DiaryMain {
         }
         System.out.println();
     }
+
 
 
 

@@ -1,17 +1,26 @@
 package diaryApp;
 
+import diaryApp.exception.UserNameExistError;
 import diaryApp.exception.DiaryNotFoundError;
-import diaryApp.exception.InvalidPasswordError;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Diaries {
-    private final List<Diary> diaries = new ArrayList<>();
+    private final List<Diary> diaries;
+
+    public Diaries(){
+diaries = new ArrayList<>();
+    }
 
     public void add(String username, String password) {
+        for (Diary diary : diaries){
+            if (diary.getUsername().contains(username)) throw new UserNameExistError("Error!!! a user by that username already exists\nEnter again");
+        }
+
         Diary diary = new Diary(username, password);
         diaries.add(diary);
+
     }
 
     public int getSizeOfDiaries() {
