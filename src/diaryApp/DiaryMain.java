@@ -45,7 +45,7 @@ public class DiaryMain {
 //    }
 
 
-    public static void mainMenu(){
+    public static void mainMenu() throws InterruptedException {
 
         System.out.println("""
                 ============================
@@ -62,11 +62,12 @@ public class DiaryMain {
             case "1" -> createDiary();
             case "2" -> unlockDiary();
             case "3" -> System.exit(0);
-            default -> mainMenu();
+            default -> {
+                System.out.println("Error!!!\nChoose between 1 -3");mainMenu();}
         }
     }
 
-    private static void lockDiary() {
+    private static void lockDiary() throws InterruptedException {
         if (myDiary == null) {
             System.out.println("Diary not created. Please create a diary first.");
             mainMenu();
@@ -82,7 +83,7 @@ public class DiaryMain {
         }
     }
 
-    private static void unlockDiary() {
+    private static void unlockDiary() throws InterruptedException {
         if (myDiary == null) {
             System.out.println("Diary not created. Please create a diary first.");
             mainMenu();
@@ -101,7 +102,7 @@ public class DiaryMain {
 
     }
 
-    private  static void entryOptions(){
+    private  static void entryOptions() throws InterruptedException {
         System.out.println("""
                 press 1 -> Add Entry
                 press 2 -> Find Entry By Id
@@ -123,7 +124,7 @@ public class DiaryMain {
         }
     }
 
-    private static void entryDelete() {
+    private static void entryDelete() throws InterruptedException {
         System.out.println("Enter entry id");
         int entry_id = input(Integer.class);
 
@@ -151,7 +152,7 @@ public class DiaryMain {
     }
 
 
-    private static void diaryUpdate() {
+    private static void diaryUpdate() throws InterruptedException {
 
         System.out.println("Enter entry id: ");
         String id = input(String.class);
@@ -180,7 +181,7 @@ public class DiaryMain {
 
     }
 
-    private static void findEntry() {
+    private static void findEntry() throws InterruptedException {
         System.out.println("Enter entry id: ");
         int id = input(Integer.class);
         try {
@@ -214,7 +215,7 @@ public class DiaryMain {
     }
 
 
-    private static void createDiary() {
+    private static void createDiary() throws InterruptedException {
         System.out.println("Enter Username: ");
         String userName = input(String.class);
 
@@ -234,14 +235,30 @@ public class DiaryMain {
         }
 
         myDiary = new Diary(userName,password);
+        creating();
         System.out.println("Diary created successfully!!!");
+        System.out.println();
+
         mainMenu();
+    }
+
+    private static void creating() throws InterruptedException {
+
+        String symbol = " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
+
+        System.out.print("Creating please hold on ");
+
+        for (int index = 0; index < symbol.length();index++){
+            System.out.print(symbol.charAt(index));
+            java.lang.Thread.sleep(100);
+        }
+        System.out.println();
     }
 
 
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         mainMenu();
 
 

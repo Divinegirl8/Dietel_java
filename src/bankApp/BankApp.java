@@ -28,7 +28,7 @@ public class BankApp {
         return object;
     }
 
-    public static void mainMenu(){
+    public static void mainMenu() throws InterruptedException {
         print("""
     ================================
             Oceanic Bank
@@ -55,7 +55,7 @@ public class BankApp {
 
 
 
-    private static void transfer() {
+    private static void transfer() throws InterruptedException {
         print("Enter Sender Account Number: ");
         String senderNumber = input(String.class);
         print("Enter Receiver Account Number: ");
@@ -67,7 +67,7 @@ public class BankApp {
 
         try {
             myBank.transfer(amount,senderNumber,receiverNumber,pin);
-            System.out.println(myBank.findCustomerAccountNumber(senderNumber));
+            System.out.println("Account Balance: " + myBank.checkBalance(senderNumber,pin));
             mainMenu();
         }catch (Exception exception){
             print(exception.getMessage());
@@ -75,7 +75,7 @@ public class BankApp {
         }
     }
 
-    private static void checkBalance() {
+    private static void checkBalance() throws InterruptedException {
         print("Enter your account number: ");
         String accountNumber = input(String.class);
 
@@ -83,8 +83,7 @@ public class BankApp {
         String pin = input(String.class);
 
         try {
-            myBank.checkBalance(accountNumber,pin);
-            System.out.println(myBank.findCustomerAccountNumber(accountNumber));
+            System.out.println("Account Balance: " + myBank.checkBalance(accountNumber, pin));
             mainMenu();
         } catch (Exception exception){
             print(exception.getMessage());
@@ -97,29 +96,43 @@ public class BankApp {
         print("Enter your account number: ");
         String accountNumber = input(String.class);
         print("Enter amount to withdraw: ");
-        BigDecimal amount = input(BigDecimal.class);
+        String amount = input(String.class);
+
+        while (!amount.matches("\\d+")){
+            System.out.println("Amount should be a positive number only");
+            amount = input(String.class);
+        }
+
+        BigDecimal convertAmount = BigDecimal.valueOf(Integer.parseInt(amount));
+
         print("Enter pin");
         String pin = input(String.class);
 
         try {
-            myBank.withDraw(amount,accountNumber,pin);
+            myBank.withDraw(convertAmount,accountNumber,pin);
             System.out.println(myBank.findCustomerAccountNumber(accountNumber));
             mainMenu();
         }catch (Exception exception){
-            print(exception.getMessage());
-            mainMenu();
+            print(exception.getMessage());withdraw();
         }
 
     }
 
-    private static void deposit() {
+    private static void deposit() throws InterruptedException {
         print("Enter your account number: ");
         String accountNumber = input(String.class);
         print("Enter amount to deposit ");
-        BigDecimal amount = input(BigDecimal.class);
+        String amount = input(String.class);
+
+        while (!amount.matches("\\d+")){
+            System.out.println("Amount should be a positive number only");
+            amount = input(String.class);
+        }
+
+        BigDecimal convertAmount = BigDecimal.valueOf(Integer.parseInt(amount));
 
         try{
-            myBank.deposit(amount, accountNumber);
+            myBank.deposit(convertAmount, accountNumber);
             System.out.println(myBank.findCustomerAccountNumber(accountNumber));
             mainMenu();
         }catch (Exception exception){
@@ -128,7 +141,7 @@ public class BankApp {
         }
     }
 
-    private static void createAccount() {
+    private static void createAccount() throws InterruptedException {
         print("First Name: ");
         String firstName = input(String.class);
 
@@ -149,15 +162,34 @@ public class BankApp {
         print("Create Password");
         String password = input(String.class);
 
+        while (password.length() < 6){
+            System.out.println("password too weak!!!, the length of password must greater than 5");
+            password = input(String.class);
+        }
+
         Account account = myBank.createAccount(firstName,lastName,password);
+        creating();
         System.out.println("Account created successfully");
-        System.out.println(account);
+        System.out.println("Account Number: " + account.getNumber());
         mainMenu();
+    }
+
+    private static void creating() throws InterruptedException {
+
+        String symbol = " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
+
+        System.out.print("Creating please hold on ");
+
+        for (int index = 0; index < symbol.length();index++){
+            System.out.print(symbol.charAt(index));
+            java.lang.Thread.sleep(100);
+        }
+        System.out.println();
     }
 
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         mainMenu();
     }
 }
