@@ -68,9 +68,9 @@ public class Player {
         CellValues cellValues = currentPlayer ? CellValues.X : CellValues.O;
 
 
-        for (int i = 0; i < 3; i++) {
-            if ((board[i][0] == cellValues && board[i][1] == cellValues && board[i][2] == cellValues) ||
-                    (board[0][i] == cellValues && board[1][i] == cellValues && board[2][i] == cellValues)) {
+        for (int index = 0; index < 3; index++) {
+            if ((board[index][0] == cellValues && board[index][1] == cellValues && board[index][2] == cellValues) ||
+                    (board[0][index] == cellValues && board[1][index] == cellValues && board[2][index] == cellValues)) {
                 return true;
             }
         }
