@@ -30,18 +30,19 @@ static Player gamePlayer = new Player();
         }
     }
 
-    private static String username(){
-        return "Enter your name: ";
+    private static void username(){
+        System.out.println("Enter your name: ");
     }
 
 
     public static void main(String[] args) {
 
+        username();
+        String player1 = new Scanner(System.in).nextLine();
+                System.out.println("Welcome "+ player1 +" You are " + CellValues.X);
 
-        String player1 = username();
-        System.out.println("Welcome "+ player1 +" You are " + CellValues.X);
-
-        String player2 = username();
+        username();
+        String player2 = new Scanner(System.in).nextLine();
 
         System.out.println("Welcome "+player2 +" You are " + CellValues.O);
 
