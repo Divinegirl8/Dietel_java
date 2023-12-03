@@ -45,6 +45,7 @@ static Player gamePlayer = new Player();
         String player2 = new Scanner(System.in).nextLine();
 
         System.out.println("Welcome "+player2 +" You are " + CellValues.O);
+        displayGame(player1,player2);
 
 
     }
