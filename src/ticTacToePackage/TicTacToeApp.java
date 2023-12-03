@@ -44,8 +44,8 @@ static Player gamePlayer = new Player();
         username();
         String player2 = new Scanner(System.in).nextLine();
 
-        System.out.println("Welcome "+player2 +" You are " + CellValues.O);
-        System.out.println("choose a number between 1 - 9" + "\n");
+        System.out.println("Welcome "+player2 +" You are " + CellValues.O + "\n");
+        System.out.println("please players choose a number between 1 - 9" + "\n");
         displayGame(player1,player2);
 
 
