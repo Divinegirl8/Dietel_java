@@ -10,7 +10,7 @@ static Player gamePlayer = new Player();
         boolean gameEnded = false;
 
         while (!gameEnded) {
-            System.out.println("Enter a number player " + (gamePlayer.getPlayer() ? player2 : player1));
+            System.out.println("your turn player " + (gamePlayer.getPlayer() ? player2 : player1));
 
             try {
                 gamePlayer.play(new Scanner(System.in).nextLine());
