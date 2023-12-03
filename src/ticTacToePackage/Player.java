@@ -10,7 +10,11 @@ public class Player {
 
     private final TicTacToe ticTacToe = new TicTacToe();
     private final CellValues[][] board = ticTacToe.getBoard();
-    boolean player;
+    private boolean player;
+
+    public boolean getPlayer(){
+        return player;
+    }
 
 
 
@@ -58,26 +62,26 @@ public class Player {
         }
     }
 
-    public boolean checkWinner() {
-        CellValues cellValues = player ? CellValues.O : CellValues.X;
 
 
-        for (int row = 0; row < 3; row++) {
-            if (board[row][0] == cellValues && board[row][1] == cellValues && board[row][2] == cellValues) {
+    public boolean checkWinner(boolean currentPlayer) {
+        CellValues cellValues = currentPlayer ? CellValues.X : CellValues.O;
+
+
+        for (int i = 0; i < 3; i++) {
+            if ((board[i][0] == cellValues && board[i][1] == cellValues && board[i][2] == cellValues) ||
+                    (board[0][i] == cellValues && board[1][i] == cellValues && board[2][i] == cellValues)) {
                 return true;
             }
         }
 
-        for (int col = 0; col < 3; col++) {
-            if (board[0][col] == cellValues && board[1][col] == cellValues && board[2][col] == cellValues) {
-                return true;
-            }
-        }
 
-        if (board[0][0] == cellValues && board[1][1] == cellValues && board[2][2] == cellValues) {
+        if ((board[0][0] == cellValues && board[1][1] == cellValues && board[2][2] == cellValues) ||
+                (board[0][2] == cellValues && board[1][1] == cellValues && board[2][0] == cellValues)) {
             return true;
         }
-        return board[0][2] == cellValues && board[1][1] == cellValues && board[2][0] == cellValues;
+
+        return false;
     }
 
 
@@ -90,6 +94,7 @@ public class Player {
         }
         return true;
     }
+
 
     public void switchPlayer() {
         player = !player;
