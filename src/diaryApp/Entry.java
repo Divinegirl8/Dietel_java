@@ -48,7 +48,8 @@ public String toString(){
                 Entry Title: %s
                 Date Created : %s
                 =============================
-                Entry Body: %s
+                Entry Body:
+                %s
                 =============================
                 """,id,title,dateCreated,body);
 }

@@ -16,7 +16,6 @@ public class Diary {
     private boolean isLocked = true;
     private List<Entry> entries;
 
-    private List<Diary> diaries;
 
     private int entrySize;
 
@@ -26,7 +25,7 @@ public Diary(String username, String password){
     this.username = username;
     this.password = password;
     entries = new ArrayList<>();
-    diaries = new ArrayList<>();
+
 
 
 }
@@ -67,9 +66,6 @@ public Diary(String username, String password){
         if (isLocked) throw new DiaryLockExceptions("Diary is locked");
     }
 
-    public void addDiary(Diary diary) {
-        diaries.add(diary);
-    }
 
     public String generateTime() {
         return  LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));

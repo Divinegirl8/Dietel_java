@@ -15,7 +15,7 @@ diaries = new ArrayList<>();
 
     public void add(String username, String password) {
         for (Diary diary : diaries){
-            if (diary.getUsername().contains(username)) throw new UserNameExistError("Error!!! a user by that username already exists\nEnter again");
+            if (diary.getUsername().contains(username)) throw new UserNameExistError("Error!!! a user by that name already exists\nEnter again");
         }
 
         Diary diary = new Diary(username, password);
