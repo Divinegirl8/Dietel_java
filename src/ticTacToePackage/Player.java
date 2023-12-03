@@ -76,12 +76,8 @@ public class Player {
         }
 
 
-        if ((board[0][0] == cellValues && board[1][1] == cellValues && board[2][2] == cellValues) ||
-                (board[0][2] == cellValues && board[1][1] == cellValues && board[2][0] == cellValues)) {
-            return true;
-        }
-
-        return false;
+        return (board[0][0] == cellValues && board[1][1] == cellValues && board[2][2] == cellValues) ||
+                (board[0][2] == cellValues && board[1][1] == cellValues && board[2][0] == cellValues);
     }
 
 

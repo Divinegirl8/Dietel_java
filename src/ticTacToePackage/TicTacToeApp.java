@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class TicTacToeApp {
 
 static Player gamePlayer = new Player();
+
     public static void displayGame(String player1, String player2) {
         boolean gameEnded = false;
 
@@ -29,11 +30,20 @@ static Player gamePlayer = new Player();
         }
     }
 
-
+    private static String username(){
+        return "Enter your name: ";
+    }
 
 
     public static void main(String[] args) {
-        displayGame("divine","vera");
+
+
+        String player1 = username();
+        System.out.println("Welcome "+ player1 +" You are " + CellValues.X);
+
+        String player2 = username();
+
+        System.out.println("Welcome "+player2 +" You are " + CellValues.O);
 
 
     }
