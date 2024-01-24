@@ -44,7 +44,6 @@ public class UniqueValues {
         }
         return true;
     }
-
     public static void main(String[] args) {
         int[] numbersWithUniqueValues = {22,22,1,1,5,9,2,3,4,3,5};
         System.out.println(Arrays.toString(uniqueValuesRemovalWithoutBuiltInFunction(numbersWithUniqueValues)));
