@@ -18,5 +18,11 @@ public class TwoSum {
         return newContainer;
     }
 
+    public static void main(String[] args) {
+        TwoSum twoSum = new TwoSum();
+        int[] numbers = {2,3,4};
+        System.out.println(Arrays.toString(twoSum.twoSum(numbers,6)));
+    }
+
 
 }

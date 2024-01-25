@@ -2,23 +2,24 @@ package leetcode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
+
+import static java.util.Arrays.sort;
 
 public class RemoveElement {
   ;
-    public int removeElement(int[] nums, int val) {
-        ArrayList<Integer> newList = new ArrayList<>();
+    public static int removeElement(int[] nums, int val) {
+          int count = 0;
         for (int index = 0; index < nums.length; index++) {
             if (nums[index] != val){
-                newList.add(nums[index]);
+                nums[count++] = nums[index];
+
+
             }
         }
-        return newList.size();
-    }
 
-    public static void main(String[] args) {
-        RemoveElement removeElement = new RemoveElement();
-        int[] nums = {3,1};
-        int val = 3;
-        System.out.println(removeElement.removeElement(nums, val));
-    }
+        return count;
+        }
+
+
 }

@@ -9,7 +9,9 @@ public class reverseString {
             char value = word.charAt(count);
             check += value;
         }
-        return check;
+        return displayWord(check);
+
+
     }
 
     public static String displayWord(String word){
@@ -22,6 +24,10 @@ public class reverseString {
         }
 
         return display;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(reverseWord("hi div"));
     }
 
 }
