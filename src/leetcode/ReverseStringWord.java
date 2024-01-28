@@ -6,14 +6,12 @@ public class ReverseStringWord {
       StringBuilder value = new StringBuilder();
 
         for (int index = convertToArray.length-1; index >=  0; index--) {
-            value.append(convertToArray[index]).append(" ");
+            value.append(convertToArray[index]);
+
+            if (index > 0){
+                value.append(" ");
+            }
         }
        return value.toString();
-    }
-
-    public static void main(String[] args) {
-        ReverseStringWord reverseStringWord = new ReverseStringWord();
-
-        System.out.println(reverseStringWord.reverseWords("Hi Ada"));
     }
 }

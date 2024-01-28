@@ -1,24 +1,26 @@
 package leetcode;
 
+import java.util.Arrays;
+
 public class MajorElement {
     public int majorityElement(int[] nums) {
-        int value = 0;
+        int max = 0;
         for (int index = 0; index < nums.length; index++) {
 
             int count = 0;
 
             for (int temp = 0; temp < nums.length; temp++) {
-                if (nums[index] == nums[index]){
+                if (nums[index] == nums[temp]){
                     count++;
                 }
             }
 
-            int max = 0;
 
-            if (count > max){
-                value = nums[index];
+            if (count > nums.length/2){
+                max = nums[index];
             }
         }
-        return value;
+        return max;
     }
+
 }

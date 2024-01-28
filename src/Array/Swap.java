@@ -30,7 +30,7 @@ public class Swap {
 
     public static void main(String[] args) {
         int[] value = {42, 15,18,13,13,16};
-        System.out.println(Arrays.toString(swap2(value)));
+        System.out.println(Arrays.toString(swap(value)));
     }
 
 
