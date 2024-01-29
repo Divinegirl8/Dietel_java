@@ -1,9 +1,9 @@
-package leetcode;
+package Jonathan;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
-public class MajorElement {
-    public int majorityElement(int[] nums) {
+public class MostOccurring {
+    public static int mostOccurring(int[] nums) {
         int max = 0;
         int number = 0;
 
@@ -24,7 +24,6 @@ public class MajorElement {
 
         }
         return max;
-
 
     }
 
