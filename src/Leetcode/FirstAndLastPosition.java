@@ -43,14 +43,14 @@ public class FirstAndLastPosition {
 
 
 
-    private int[] convertToArray(ArrayList<Integer> newValue){
-        int[] value = new int[newValue.size()];
+        private int[] convertToArray(ArrayList<Integer> newValue){
+            int[] value = new int[newValue.size()];
 
-        for (int index = 0; index < newValue.size(); index++) {
-            value[index] = newValue.get(index);
+            for (int index = 0; index < newValue.size(); index++) {
+                value[index] = newValue.get(index);
+            }
+            return value;
         }
-        return value;
-    }
 
 
 }

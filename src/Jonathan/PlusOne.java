@@ -1,19 +1,24 @@
 package Jonathan;
 
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.Arrays;
 
 public class PlusOne {
 
     public static int[] plusOne(int[] inputs) {
-       String value = "";
-       int convertToInteger;
+       StringBuilder value = new StringBuilder();
 
-        for (int input : inputs) {value += input;}
-        convertToInteger = Integer.parseInt(value) + 1;
+        for (int input: inputs) {
+            value.append(input);
+        }
+        BigInteger bigInteger = new BigInteger(value.toString()).add(BigInteger.ONE);
+        String output = bigInteger.toString();
 
-        return changeToArray(String.valueOf(convertToInteger));
+        return changeToArray(output);
+
     }
-
 
     private static int[] changeToArray(String value){
         int[] newArray = new int[value.length()];
