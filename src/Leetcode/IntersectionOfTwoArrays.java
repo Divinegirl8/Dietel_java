@@ -1,12 +1,9 @@
 package Leetcode;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class IntersectionOfTwoArrays {
-    public int[] intersect(int[] nums1, int[] nums2) {
+    public static int intersect(int[] nums1, int[] nums2) {
         int[] removeNumberOneDuplicate = removeDuplicate(nums1);
         int[] removeNumberTwoDuplicates = removeDuplicate(nums2);
 
@@ -16,12 +13,9 @@ public class IntersectionOfTwoArrays {
         Set<Integer> uniqueSet1 = new HashSet<>(firstSet);
         uniqueSet1.retainAll(secondSet);
 
-        return uniqueSet1.stream().mapToInt(Integer::intValue).toArray();
+        int[] value = uniqueSet1.stream().mapToInt(Integer::intValue).toArray();
+       return minimum(value);
     }
-
-
-
-
 
 
     private static Set<Integer> convertToSet(int[] values){
@@ -52,5 +46,14 @@ public class IntersectionOfTwoArrays {
         return value;
     }
 
+    private static int minimum(int[] values){
+        int min = Integer.MAX_VALUE;
+        for (int value : values){
+            if (min > value ){
+                min = value;
+            }
+        }
+        return min;
+    }
 
 }
