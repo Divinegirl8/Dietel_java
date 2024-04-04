@@ -31,4 +31,10 @@ class VariableLengthTest {
         assertArrayEquals(result, hcfOfHusband(9, 27));
     }
 
+    @Test
+    void testSomething2(){
+        int[] result = {2, 2};
+        assertArrayEquals(result, hcfOfHusband(8,16,12));
+    }
+
 }

@@ -14,7 +14,7 @@ public class UserInput {
 
         while ( count < 10) {
 
-            System.out.println("Enter student score (paas = 1 and fail = 2): ");
+            System.out.println("Enter student score (pass = 1 and fail = 2): ");
             int score = scan.nextInt();
 
             if (score == 1) {

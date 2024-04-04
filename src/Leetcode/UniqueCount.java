@@ -52,7 +52,9 @@ public class UniqueCount {
 
     public static void main(String[] args) {
         UniqueCount uniqueCount = new UniqueCount();
-        int[]  arr = {1,2,2,1,1,3};
+        int[]  arr = {3,5,-2,-3,-6,-6};
+        int[] arr2 = {1,2,2,1,1,3};
         System.out.println(uniqueCount.uniqueOccurrences(arr));
+        System.out.println(uniqueCount.uniqueOccurrences(arr2));
     }
 }
